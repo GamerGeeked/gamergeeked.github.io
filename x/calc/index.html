@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v2.0.2</title>
+		<title>xCalc v2.1.0</title>
 		<style>
 	.button {
 		background-color: #005f3b;
@@ -20,9 +20,9 @@
 </style>
 	</head>
 	<body>
-		<h1>Calculator Experiment v2.0.2</h1>
-		<button type="button" class="button" onclick="Summon('+')">+</button><button type="button" class="button" onclick="Summon('−')">−</button><br>
-		<button type="button" class="button" onclick="Summon('×')">×</button><button type="button" class="button" onclick="Summon('÷')">÷</button><br>
+		<h1>Calculator Experiment v2.1.0</h1>
+		<button type="button" class="button" onclick="Summon('+')">+</button><button type="button" class="button" onclick="Summon('−')">−</button><button type="button" class="button" onclick="Summon('^')">↑</button><br>
+		<button type="button" class="button" onclick="Summon('×')">×</button><button type="button" class="button" onclick="Summon('÷')">÷</button><button type="button" class="button" onclick="Summon('log')">log</button><br>
 		<button type="button" class="button" onclick="Summon('%')">%</button><button type="button" class="button" onclick="Summon('in base')">B</button><button type="button" class="button" onclick="Reset()">C</button><br>
 	</body>
 </html>
@@ -43,6 +43,12 @@ function Summon(op) {
 		result = Number(num1)*Number(num2);
     } else if (op == "÷") {
 		result = Number(num1)/Number(num2);
+    } else if (op == "%") {
+		result = Number(num1)%Number(num2);
+    } else if (op == "^") {
+		result = Number(num1)%Number(num2);
+    } else if (op == "log") {
+		result = Math.log(num1) / Math.log(num2);
     } else if (op == "%") {
 		result = Number(num1)%Number(num2);
     } else if (op == "in base") {
