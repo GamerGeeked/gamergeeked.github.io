@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v2.4.5</title>
+		<title>xCalc v2.4.6</title>
 		<style>
 	.operation {
 		background-color: #005f3b;
@@ -26,8 +26,7 @@
 		font-size: 24px;
 		height: 50px;
 		width: 50px;
-		margin: 8px;
-		margin-top: 5px;
+		margin: 5px;
 		cursor: pointer;
 	} .constant {
 		background-color: #003b5f;
@@ -58,11 +57,12 @@
 </style>
 	</head>
 	<body>
-		<h1>Calculator Experiment v2.4.5</h1>
+		<h1>Calculator Experiment v2.4.6</h1>
 		<button type="button" class="operation" onclick="getOperation('+')">+</button><button type="button" class="operation" onclick="getOperation('−')">−</button><button type="button" class="operation" onclick="getOperation('^')">↑</button><br>
 		<button type="button" class="operation" onclick="getOperation('×')">×</button><button type="button" class="operation" onclick="getOperation('÷')">÷</button><button type="button" class="operation" onclick="getOperation('log')">log</button><br>
 		<button type="button" class="operation" onclick="getOperation('%')">%</button><button type="button" class="operation" onclick="getOperation('in base')">B</button><button type="button" class="constant" onclick="getConstant('π')">π</button><button type="button" class="constant" onclick="getConstant('e')">e</button><button type="button" class="clear" onclick="Reset()">C</button><br>
-		<button type="button" class="function" onclick="getFunction('!')">!</button><button type="button" class="function" onclick="getFunction('sin')">sin</button><button type="button" class="function" onclick="getFunction('cos')">cos</button><button type="button" class="function" onclick="getFunction('tan')">tan</button><button type="button" class="function" onclick="getAbs()">abs</button>
+		<button type="button" class="function" onclick="getFunction('!')">!</button><button type="button" class="function" onclick="getAbs()">abs</button><br>
+		<button type="button" class="function" onclick="getFunction('sin')">sin</button><button type="button" class="function" onclick="getFunction('cos')">cos</button><button type="button" class="function" onclick="getFunction('tan')">tan</button>
 	</body>
 </html>
 <script type="text/javascript">var num1
