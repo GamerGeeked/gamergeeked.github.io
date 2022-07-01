@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v2.4.7</title>
+		<title>xCalc v2.5.0</title>
 		<style>
 	.operation {
 		background-color: #005f3b;
@@ -61,7 +61,7 @@
 		<button type="button" class="operation" onclick="getOperation('+')">+</button><button type="button" class="operation" onclick="getOperation('−')">−</button><button type="button" class="operation" onclick="getOperation('^')">↑</button><br>
 		<button type="button" class="operation" onclick="getOperation('×')">×</button><button type="button" class="operation" onclick="getOperation('÷')">÷</button><button type="button" class="operation" onclick="getOperation('log')">log</button><br>
 		<button type="button" class="operation" onclick="getOperation('%')">%</button><button type="button" class="operation" onclick="getOperation('in base')">B</button><button type="button" class="constant" onclick="getConstant('π')">π</button><button type="button" class="constant" onclick="getConstant('e')">e</button><button type="button" class="clear" onclick="Reset()">C</button><br>
-		<button type="button" class="function" onclick="getFunction('!')">!</button><button type="button" class="function" onclick="getFunction('abs')">abs</button><br>
+		<button type="button" class="function" onclick="getFunction('!')">!</button><button type="button" class="function" onclick="getFunction('abs')">abs</button><button type="button" class="function" onclick="getFunction('ln')">ln</button><br>
 		<button type="button" class="function" onclick="getFunction('sin')">sin</button><button type="button" class="function" onclick="getFunction('cos')">cos</button><button type="button" class="function" onclick="getFunction('tan')">tan</button>
 	</body>
 </html>
@@ -123,7 +123,10 @@ function getFunction(op) {
 	} else if (op == "abs") {
 		tempNum = Math.abs(num1);
 		window.alert("|" + num1 + "| = " + tempNum);
-	}else {
+	} else if (op == "ln") {
+		tempNum = Math.abs(num1);
+		window.alert("ln " + num1 + " = " + tempNum);
+	} else {
 		window.alert("Error: Unknown Function");
 	} num1 = tempNum;
 	window.alert("You can now do math with the result or press a blue button to start a new calculation");
