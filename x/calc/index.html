@@ -21,30 +21,38 @@
 	</head>
 	<body>
 	    <h1>Calculator</h1>
-		<button type="button" class="button" onclick="summon('+')">+</button><button type="button" class="button" onclick="summon('-')">-</button><br>
-		<button type="button" class="button" onclick="summon('*')">*</button><button type="button" class="button" onclick="summon('/')">/</button><br>
-		<button type="button" class="button" onclick="summon('%')">%<button type="button" class="button" onclick="reset()">C</button><br>
+		<button type="button" class="button" onclick="Summon('+')">+</button><button type="button" class="button" onclick="Summon('−')">−</button><br>
+		<button type="button" class="button" onclick="Summon('×')">×</button><button type="button" class="button" onclick="Summon('÷')">÷</button><br>
+		<button type="button" class="button" onclick="Summon('%')">%</button><button type="button" class="button" onclick="Summon('in base')">B</button><button type="button" class="button" onclick="Reset()">C</button><br>
 	</body>
 </html>
-<script type="text/javascript">var n1
-function reset() {
-    n1 = prompt("First Number", "2");
+<script type="text/javascript">var num1
+function Reset() {
+    num1 = prompt("First Number", "2");
 } 
-reset();
-var r
-function summon(op) {
-    var n2 = prompt("Second Number", "2");
+Reset();
+var result
+var originalBase
+function Summon(op) {
+    var num2 = prompt("Second Number", "2");
     if (op == "+") {
-	    r = Number(n1)+Number(n2);
-    } else if (op == "-") {
-	    r = Number(n1)-Number(n2);
-    } else if (op == "*") {
-	    r = Number(n1)*Number(n2);
-    } else if (op == "/") {
-	    r = Number(n1)/Number(n2);
+	    result = Number(num1)+Number(num2);
+    } else if (op == "−") {
+		result = Number(num1)-Number(num2);
+    } else if (op == "×") {
+		result = Number(num1)*Number(num2);
+    } else if (op == "÷") {
+		result = Number(num1)/Number(num2);
     } else if (op == "%") {
-	    r = Number(n1)%Number(n2);
-    } window.alert(n1 + " " + op + " " + n2 + " = " + r);
-	n1 = r;
+		result = Number(num1)%Number(num2);
+    } else if (op == "in base") {
+	//	if (num2 == "10") {	// Intended to convert from other bases into decimal
+	//		originalBase = prompt("Original Base", "10"); 	// Mostly nonfunctional
+	//		parseInt(toString(num1), Number(originalBase));
+	//	} else {
+		result = Number(num1).toString(num2);
+	//	}
+    } window.alert(num1 + " " + op + " " + num2 + " = " + result);
+	num1 = r;
 	window.alert("You can now do math with the result or press C to start a new calculation");
 }</script>
