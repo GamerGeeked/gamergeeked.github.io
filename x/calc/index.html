@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v2.6.2</title>
+		<title>xCalc v2.6.3</title>
 		<style>
 	.operation {
 		background-color: #005f3b;
@@ -57,7 +57,7 @@
 </style>
 	</head>
 	<body>
-		<h1>Calculator Experiment v2.6.2</h1>
+		<h1>Calculator Experiment v2.6.3</h1>
 		<button type="button" class="operation" onclick="getOperation('+')">+</button><button type="button" class="operation" onclick="getOperation('−')">−</button><button type="button" class="operation" onclick="getOperation('^')">↑</button><button type="button" class="constant" onclick="getConstant('π')">π</button><br>
 		<button type="button" class="operation" onclick="getOperation('×')">×</button><button type="button" class="operation" onclick="getOperation('÷')">÷</button><button type="button" class="operation" onclick="getOperation('log')">log</button><button type="button" class="constant" onclick="getConstant('e')">e</button><br>
 		<button type="button" class="operation" onclick="getOperation('%')">%</button><button type="button" class="operation" onclick="getOperation('in base')">B</button><button type="button" class="clear" onclick="Reset()">C</button><button type="button" class="constant" onclick="getConstant('?')">?</button><br>
@@ -112,22 +112,17 @@ function getFunction(op) {
 		window.alert(num1 + "! = " + tempNum);
 	} else if (op == "sin") {
 		tempNum = Math.sin(num1);
-		window.alert("sin " + num1 + " = " + tempNum);
 	} else if (op == "cos") {
 		tempNum = Math.cos(num1);
-		window.alert("cos " + num1 + " = " + tempNum);
 	} else if (op == "tan") {
 		tempNum = Math.tan(num1);
-		window.alert("tan " + num1 + " = " + tempNum);
 	} else if (op == "abs") {
 		tempNum = Math.abs(num1);
-		window.alert("|" + num1 + "| = " + tempNum);
 	} else if (op == "ln") {
 		tempNum = Math.log(num1);
-		window.alert("ln " + num1 + " = " + tempNum);
 	} else {
 		window.alert("Error: Unknown Function");
-	} num1 = tempNum;
+	} if (op != "!" && op != "abs") { window.alert(op + " " + num1 + " = " + tempNum); } num1 = tempNum;
 	window.alert("You can now do math with the result or press a blue button to start a new calculation");
 }
 function getConstant(op) {
