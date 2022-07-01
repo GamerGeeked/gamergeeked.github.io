@@ -16,6 +16,18 @@
 		width: 100px;
 		margin: 5px;
 		cursor: pointer;
+	} .button2 {
+		background-color: #005f3b;
+		border: none;
+		color: white;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 24px;
+		height: 50px;
+		width: 50px;
+		margin: 5px;
+		cursor: pointer;
 	}
 </style>
 	</head>
@@ -24,6 +36,7 @@
 		<button type="button" class="button" onclick="Summon('+')">+</button><button type="button" class="button" onclick="Summon('−')">−</button><button type="button" class="button" onclick="Summon('^')">↑</button><br>
 		<button type="button" class="button" onclick="Summon('×')">×</button><button type="button" class="button" onclick="Summon('÷')">÷</button><button type="button" class="button" onclick="Summon('log')">log</button><br>
 		<button type="button" class="button" onclick="Summon('%')">%</button><button type="button" class="button" onclick="Summon('in base')">B</button><button type="button" class="button" onclick="Reset()">C</button><br>
+		<button type="button" class="button2" onclick="Factorial()">!</button>
 	</body>
 </html>
 <script type="text/javascript">var num1
@@ -61,4 +74,14 @@ function Summon(op) {
     } window.alert(num1 + " " + op + " " + num2 + " = " + result);
 	num1 = r;
 	window.alert("You can now do math with the result or press C to start a new calculation");
-}</script>
+}
+var tempNum
+function Factorial() {
+	tempNum = num1
+	for(i = tempNum - 1; i >= 1; i--) {
+		tempNum = tempNum * i;
+	}
+	window.alert(num1 + "! = " + tempNum);
+	window.alert("You can now do math with the result or press C to start a new calculation");
+}
+</script>
