@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v2.5.0</title>
+		<title>xCalc v2.5.10</title>
 		<style>
 	.operation {
 		background-color: #005f3b;
@@ -57,7 +57,7 @@
 </style>
 	</head>
 	<body>
-		<h1>Calculator Experiment v2.4.7</h1>
+		<h1>Calculator Experiment v2.5.10</h1>
 		<button type="button" class="operation" onclick="getOperation('+')">+</button><button type="button" class="operation" onclick="getOperation('−')">−</button><button type="button" class="operation" onclick="getOperation('^')">↑</button><br>
 		<button type="button" class="operation" onclick="getOperation('×')">×</button><button type="button" class="operation" onclick="getOperation('÷')">÷</button><button type="button" class="operation" onclick="getOperation('log')">log</button><br>
 		<button type="button" class="operation" onclick="getOperation('%')">%</button><button type="button" class="operation" onclick="getOperation('in base')">B</button><button type="button" class="constant" onclick="getConstant('π')">π</button><button type="button" class="constant" onclick="getConstant('e')">e</button><button type="button" class="clear" onclick="Reset()">C</button><br>
@@ -124,7 +124,7 @@ function getFunction(op) {
 		tempNum = Math.abs(num1);
 		window.alert("|" + num1 + "| = " + tempNum);
 	} else if (op == "ln") {
-		tempNum = Math.abs(num1);
+		tempNum = Math.log(num1);
 		window.alert("ln " + num1 + " = " + tempNum);
 	} else {
 		window.alert("Error: Unknown Function");
