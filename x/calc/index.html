@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v2.7.1</title>
+		<title>xCalc v2.8.0</title>
 		<style>
 	.operation {
 		background-color: #005f3b;
@@ -64,7 +64,7 @@
 		<button type="button" class="operation" onclick="GetOperation('+')">+</button><button type="button" class="operation" onclick="GetOperation('−')">−</button><button type="button" class="operation" onclick="GetOperation('^')">↑</button><button type="button" class="constant" onclick="GetConstant('π')">π</button><br>
 		<button type="button" class="operation" onclick="GetOperation('×')">×</button><button type="button" class="operation" onclick="GetOperation('÷')">÷</button><button type="button" class="operation" onclick="GetOperation('log')">log</button><button type="button" class="constant" onclick="GetConstant('e')">e</button><br>
 		<button type="button" class="operation" onclick="GetOperation('%')">%</button><button type="button" class="operation" onclick="GetOperation('in base')">B</button><button type="button" class="clear" onclick="Reset()">C</button><button type="button" class="constant" onclick="GetConstant('?')">?</button><br>
-		<button type="button" class="function" onclick="GetFunction('!')">!</button><button type="button" class="function" onclick="GetFunction('abs')">abs</button><button type="button" class="function" onclick="GetFunction('ln')">ln</button><button type="button" class="function" onclick="GetFunction('sin')">sin</button><button type="button" class="function" onclick="GetFunction('cos')">cos</button><button type="button" class="function" onclick="GetFunction('tan')">tan</button>
+		<button type="button" class="function" onclick="GetFunction('!')">!</button><button type="button" class="function" onclick="GetFunction('abs')">abs</button><button type="button" class="function" onclick="GetFunction('ln')">ln</button><button type="button" class="function" onclick="GetFunction('sin')">sin</button><button type="button" class="function" onclick="GetFunction('cos')">cos</button><button type="button" class="function" onclick="GetFunction('tan')">tan</button><button type="button" class="function" onclick="GetFunction('round')">rnd</button>
 	</body>
 </html>
 <script type="text/javascript">var num1
@@ -123,6 +123,8 @@ function GetFunction(op) {
 		tempNum = Math.abs(num1);
 	} else if (op == "ln") {
 		tempNum = Math.log(num1);
+	} else if (op == "round") {
+		tempNum = Math.round(num1);
 	} else {
 		window.alert("Error: Unknown Function");
 	} if (op != "!" && op != "abs") { window.alert(op + " " + num1 + " = " + tempNum); } num1 = tempNum;
