@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v2.3.4</title>
+		<title>xCalc v2.3.5</title>
 		<style>
 	.button {
 		background-color: #005f3b;
@@ -32,7 +32,7 @@
 </style>
 	</head>
 	<body>
-		<h1>Calculator Experiment v2.3.4</h1>
+		<h1>Calculator Experiment v2.2.14</h1>
 		<button type="button" class="button" onclick="Summon('+')">+</button><button type="button" class="button" onclick="Summon('−')">−</button><button type="button" class="button" onclick="Summon('^')">↑</button><br>
 		<button type="button" class="button" onclick="Summon('×')">×</button><button type="button" class="button" onclick="Summon('÷')">÷</button><button type="button" class="button" onclick="Summon('log')">log</button><br>
 		<button type="button" class="button" onclick="Summon('%')">%</button><button type="button" class="button" onclick="Summon('in base')">B</button><button type="button" class="button" onclick="Reset()">C</button><br>
@@ -78,14 +78,6 @@ function Summon(op) {
 	window.alert("You can now do math with the result or press C to start a new calculation");
 }
 var tempNum
-function Factorial() {
-	tempNum = num1
-	for(i = tempNum - 1; i >= 1; i--) {
-		tempNum = tempNum * i;
-	}
-	window.alert(num1 + "! = " + tempNum);
-	window.alert("You can now do math with the result or press C to start a new calculation");
-}
 function getSimpleFunction(op) {
 	if (op == "!") {
 		tempNum = num1
