@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v2.3.5</title>
+		<title>xCalc v2.3.6</title>
 		<style>
-	.button {
+	.operation {
 		background-color: #005f3b;
 		border: none;
 		color: white;
@@ -16,7 +16,7 @@
 		width: 100px;
 		margin: 5px;
 		cursor: pointer;
-	} .button2 {
+	} .function {
 		background-color: #005f3b;
 		border: none;
 		color: white;
@@ -28,15 +28,27 @@
 		width: 50px;
 		margin: 8px;
 		cursor: pointer;
-	}
+	} .constant {
+		background-color: #003b5f;
+		border: none;
+		color: white;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 24px;
+		height: 100px;
+		width: 50px;
+		margin: 5px;
+		cursor: pointer;
+	} 
 </style>
 	</head>
 	<body>
-		<h1>Calculator Experiment v2.2.14</h1>
-		<button type="button" class="button" onclick="Summon('+')">+</button><button type="button" class="button" onclick="Summon('−')">−</button><button type="button" class="button" onclick="Summon('^')">↑</button><br>
-		<button type="button" class="button" onclick="Summon('×')">×</button><button type="button" class="button" onclick="Summon('÷')">÷</button><button type="button" class="button" onclick="Summon('log')">log</button><br>
-		<button type="button" class="button" onclick="Summon('%')">%</button><button type="button" class="button" onclick="Summon('in base')">B</button><button type="button" class="button" onclick="Reset()">C</button><br>
-		<button type="button" class="button2" onclick="getSimpleFunction('!')">!</button><button type="button" class="button2" onclick="getSimpleFunction('sin')">sin</button><button type="button" class="button2" onclick="getSimpleFunction('cos')">cos</button><button type="button" class="button2" onclick="getSimpleFunction('tan')">tan</button><button type="button" class="button2" onclick="getAbs()">abs</button>
+		<h1>Calculator Experiment v2.3.6</h1>
+		<button type="button" class="operation" onclick="getOperation('+')">+</button><button type="button" class="operation" onclick="getOperation('−')">−</button><button type="button" class="operation" onclick="getOperation('^')">↑</button><br>
+		<button type="button" class="operation" onclick="getOperation('×')">×</button><button type="button" class="operation" onclick="getOperation('÷')">÷</button><button type="button" class="operation" onclick="getOperation('log')">log</button><br>
+		<button type="button" class="operation" onclick="getOperation('%')">%</button><button type="button" class="operation" onclick="getOperation('in base')">B</button><button type="button" class="operation" onclick="Reset()">C</button><br>
+		<button type="button" class="function" onclick="getFunction('!')">!</button><button type="button" class="function" onclick="getFunction('sin')">sin</button><button type="button" class="function" onclick="getFunction('cos')">cos</button><button type="button" class="function" onclick="getFunction('tan')">tan</button><button type="button" class="function" onclick="getAbs()">abs</button>
 	</body>
 </html>
 <script type="text/javascript">var num1
@@ -46,7 +58,7 @@ function Reset() {
 Reset();
 var result
 var originalBase
-function Summon(op) {
+function getOperation(op) {
     var num2 = prompt("Second Number", "2");
     if (op == "+") {
 	    result = Number(num1)+Number(num2);
@@ -78,7 +90,7 @@ function Summon(op) {
 	window.alert("You can now do math with the result or press C to start a new calculation");
 }
 var tempNum
-function getSimpleFunction(op) {
+function getFunction(op) {
 	if (op == "!") {
 		tempNum = num1
 		for(i = tempNum - 1; i >= 1; i--) {
