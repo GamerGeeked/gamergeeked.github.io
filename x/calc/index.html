@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v2.4.0</title>
+		<title>xCalc v2.4.1</title>
 		<style>
 	.operation {
 		background-color: #005f3b;
@@ -27,6 +27,7 @@
 		height: 50px;
 		width: 50px;
 		margin: 8px;
+		margin-top: 5px;
 		cursor: pointer;
 	} .constant {
 		background-color: #003b5f;
@@ -37,17 +38,30 @@
 		display: inline-block;
 		font-size: 32px;
 		height: 100px;
-		width: 50px;
+		width: 45px;
 		margin: 5px;
 		cursor: pointer;
-	} 
+	} .clear {
+		background-color: #003b5f;
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 32px;
+		height: 100px;
+		width: 100px;
+		margin: 5px;
+		cursor: pointer;
+	}
 </style>
 	</head>
 	<body>
-		<h1>Calculator Experiment v2.4.0</h1>
-		<button type="button" class="operation" onclick="getOperation('+')">+</button><button type="button" class="operation" onclick="getOperation('−')">−</button><button type="button" class="operation" onclick="getOperation('^')">↑</button><button type="button" class="constant" onclick="getConstant('π')">π</button><br>
-		<button type="button" class="operation" onclick="getOperation('×')">×</button><button type="button" class="operation" onclick="getOperation('÷')">÷</button><button type="button" class="operation" onclick="getOperation('log')">log</button><button type="button" class="constant" onclick="getConstant('e')">e</button><br>
-		<button type="button" class="operation" onclick="getOperation('%')">%</button><button type="button" class="operation" onclick="getOperation('in base')">B</button><button type="button" class="operation" onclick="Reset()">C</button><br>
+		<h1>Calculator Experiment v2.4.1</h1>
+		<button type="button" class="operation" onclick="getOperation('+')">+</button><button type="button" class="operation" onclick="getOperation('−')">−</button><button type="button" class="operation" onclick="getOperation('^')">↑</button><br>
+		<button type="button" class="operation" onclick="getOperation('×')">×</button><button type="button" class="operation" onclick="getOperation('÷')">÷</button><button type="button" class="operation" onclick="getOperation('log')">log</button><br>
+		<button type="button" class="operation" onclick="getOperation('%')">%</button><button type="button" class="operation" onclick="getOperation('in base')">B</button><button type="button" class="constant" onclick="getConstant('π')">π</button><button type="button" class="constant" onclick="getConstant('e')">e</button><button type="button" class="clear" onclick="Reset()">C</button><br>
 		<button type="button" class="function" onclick="getFunction('!')">!</button><button type="button" class="function" onclick="getFunction('sin')">sin</button><button type="button" class="function" onclick="getFunction('cos')">cos</button><button type="button" class="function" onclick="getFunction('tan')">tan</button><button type="button" class="function" onclick="getAbs()">abs</button>
 	</body>
 </html>
@@ -87,7 +101,7 @@ function getOperation(op) {
 		window.alert("Error: Unknown Operation");
 	} window.alert(num1 + " " + op + " " + num2 + " = " + result);
 	num1 = result;
-	window.alert("You can now do math with the result or press C or a blue constant button to start a new calculation");
+	window.alert("You can now do math with the result or press a blue button to start a new calculation");
 }
 var tempNum
 function getFunction(op) {
@@ -108,7 +122,7 @@ function getFunction(op) {
 		window.alert("tan " + num1 + " = " + tempNum);
 	} else {
 		window.alert("Error: Unknown Function");
-	} window.alert("You can now do math with the result or press C or a blue constant button to start a new calculation");
+	} window.alert("You can now do math with the result or press C or a blue button to start a new calculation");
 }
 function getConstant(op) {
 	if (op == "π") {
