@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v2.2.11</title>
+		<title>xCalc v2.2.12</title>
 		<style>
 	.button {
 		background-color: #005f3b;
@@ -32,11 +32,11 @@
 </style>
 	</head>
 	<body>
-		<h1>Calculator Experiment v2.2.11</h1>
+		<h1>Calculator Experiment v2.2.12</h1>
 		<button type="button" class="button" onclick="Summon('+')">+</button><button type="button" class="button" onclick="Summon('−')">−</button><button type="button" class="button" onclick="Summon('^')">↑</button><br>
 		<button type="button" class="button" onclick="Summon('×')">×</button><button type="button" class="button" onclick="Summon('÷')">÷</button><button type="button" class="button" onclick="Summon('log')">log</button><br>
 		<button type="button" class="button" onclick="Summon('%')">%</button><button type="button" class="button" onclick="Summon('in base')">B</button><button type="button" class="button" onclick="Reset()">C</button><br>
-		<button type="button" class="button2" onclick="Factorial()">!</button><button type="button" class="button2" onclick="getSin()">sin</button><button type="button" class="button2" onclick="getCos()">cos</button><button type="button" class="button2" onclick="getTan()">tan</button><button type="button" class="button2" onclick="getAbs()">abs</button>
+		<button type="button" class="button2" onclick="getSimpleFunction('!')">!</button><button type="button" class="button2" onclick="getSimpleFunction('sin')">sin</button><button type="button" class="button2" onclick="getSimpleFunction('cos')">cos</button><button type="button" class="button2" onclick="getSimpleFunction('tan')">tan</button><button type="button" class="button2" onclick="getAbs()">abs</button>
 	</body>
 </html>
 <script type="text/javascript">var num1
@@ -71,7 +71,7 @@ function Summon(op) {
 	//	} else {
 		result = Number(num1).toString(num2);
 	//	}
-    } window.alert(num1 + " " + op + " " + num2 + " = " + result);
+    }
 	num1 = r;
 	window.alert("You can now do math with the result or press C to start a new calculation");
 }
@@ -84,30 +84,22 @@ function Factorial() {
 	window.alert(num1 + "! = " + tempNum);
 	window.alert("You can now do math with the result or press C to start a new calculation");
 }
-function getSin() {
-	tempNum = Math.sin(num1);
-	window.alert("sin " + num1 + " = " + tempNum);
-	num1 = tempNum;
-	window.alert("You can now do math with the result or press C to start a new calculation");
-
-}
-function getCos() {
-	tempNum = Math.cos(num1);
-	window.alert("cos " + num1 + " = " + tempNum);
-	num1 = tempNum;
-	window.alert("You can now do math with the result or press C to start a new calculation");
-
-}
-function getTan() {
-	tempNum = Math.tan(num1);
-	window.alert("tan " + num1 + " = " + tempNum);
-	num1 = tempNum;
-	window.alert("You can now do math with the result or press C to start a new calculation");
-}
-function getAbs() {
-	tempNum = Math.abs(num1);
-	window.alert("|" + num1 + "| = " + tempNum);
-	num1 = tempNum;
-	window.alert("You can now do math with the result or press C to start a new calculation");
+function getSimpleFunction(op) {
+	if (op == "!") {
+		tempNum = num1
+		for(i = tempNum - 1; i >= 1; i--) {
+			tempNum = tempNum * i;
+		}
+		window.alert(num1 + "! = " + tempNum);
+	} else if (op == "sin") {
+		tempNum = Math.sin(num1);
+		window.alert("sin " + num1 + " = " + tempNum);
+	} else if (op == "cos") {
+		tempNum = Math.cos(num1);
+		window.alert("cos " + num1 + " = " + tempNum);
+	} else if (op == "tan") {
+		tempNum = Math.tan(num1);
+		window.alert("tan " + num1 + " = " + tempNum);
+	}
 }
 </script>
