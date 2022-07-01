@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v2.6.3</title>
+		<title>xCalc v2.6.4</title>
 		<style>
 	.operation {
 		background-color: #005f3b;
@@ -57,11 +57,11 @@
 </style>
 	</head>
 	<body>
-		<h1>Calculator Experiment v2.6.3</h1>
-		<button type="button" class="operation" onclick="getOperation('+')">+</button><button type="button" class="operation" onclick="getOperation('−')">−</button><button type="button" class="operation" onclick="getOperation('^')">↑</button><button type="button" class="constant" onclick="getConstant('π')">π</button><br>
-		<button type="button" class="operation" onclick="getOperation('×')">×</button><button type="button" class="operation" onclick="getOperation('÷')">÷</button><button type="button" class="operation" onclick="getOperation('log')">log</button><button type="button" class="constant" onclick="getConstant('e')">e</button><br>
-		<button type="button" class="operation" onclick="getOperation('%')">%</button><button type="button" class="operation" onclick="getOperation('in base')">B</button><button type="button" class="clear" onclick="Reset()">C</button><button type="button" class="constant" onclick="getConstant('?')">?</button><br>
-		<button type="button" class="function" onclick="getFunction('!')">!</button><button type="button" class="function" onclick="getFunction('abs')">abs</button><button type="button" class="function" onclick="getFunction('ln')">ln</button><button type="button" class="function" onclick="getFunction('sin')">sin</button><button type="button" class="function" onclick="getFunction('cos')">cos</button><button type="button" class="function" onclick="getFunction('tan')">tan</button>
+		<h1>Calculator Experiment v2.6.4</h1>
+		<button type="button" class="operation" onclick="GetOperation('+')">+</button><button type="button" class="operation" onclick="GetOperation('−')">−</button><button type="button" class="operation" onclick="GetOperation('^')">↑</button><button type="button" class="constant" onclick="GetConstant('π')">π</button><br>
+		<button type="button" class="operation" onclick="GetOperation('×')">×</button><button type="button" class="operation" onclick="GetOperation('÷')">÷</button><button type="button" class="operation" onclick="GetOperation('log')">log</button><button type="button" class="constant" onclick="GetConstant('e')">e</button><br>
+		<button type="button" class="operation" onclick="GetOperation('%')">%</button><button type="button" class="operation" onclick="GetOperation('in base')">B</button><button type="button" class="clear" onclick="Reset()">C</button><button type="button" class="constant" onclick="GetConstant('?')">?</button><br>
+		<button type="button" class="function" onclick="GetFunction('!')">!</button><button type="button" class="function" onclick="GetFunction('abs')">abs</button><button type="button" class="function" onclick="GetFunction('ln')">ln</button><button type="button" class="function" onclick="GetFunction('sin')">sin</button><button type="button" class="function" onclick="GetFunction('cos')">cos</button><button type="button" class="function" onclick="GetFunction('tan')">tan</button>
 	</body>
 </html>
 <script type="text/javascript">var num1
@@ -71,7 +71,7 @@ function Reset() {
 Reset();
 var result
 var originalBase
-function getOperation(op) {
+function GetOperation(op) {
     var num2 = prompt("Second Number", "2");
     if (op == "+") {
 	    result = Number(num1)+Number(num2);
@@ -103,7 +103,7 @@ function getOperation(op) {
 	window.alert("You can now do math with the result or press a blue button to start a new calculation");
 }
 var tempNum
-function getFunction(op) {
+function GetFunction(op) {
 	if (op == "!") {
 		tempNum = num1
 		for(i = tempNum - 1; i >= 1; i--) {
@@ -125,7 +125,7 @@ function getFunction(op) {
 	} if (op != "!" && op != "abs") { window.alert(op + " " + num1 + " = " + tempNum); } num1 = tempNum;
 	window.alert("You can now do math with the result or press a blue button to start a new calculation");
 }
-function getConstant(op) {
+function GetConstant(op) {
 	if (op == "π") {
 		num1 = Math.PI;
 	} else if (op == "e") {
