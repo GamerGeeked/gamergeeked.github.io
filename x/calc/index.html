@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v2.2.0</title>
+		<title>xCalc v2.2.10</title>
 		<style>
 	.button {
 		background-color: #005f3b;
@@ -32,11 +32,11 @@
 </style>
 	</head>
 	<body>
-		<h1>Calculator Experiment v2.2.0</h1>
+		<h1>Calculator Experiment v2.2.10</h1>
 		<button type="button" class="button" onclick="Summon('+')">+</button><button type="button" class="button" onclick="Summon('−')">−</button><button type="button" class="button" onclick="Summon('^')">↑</button><br>
 		<button type="button" class="button" onclick="Summon('×')">×</button><button type="button" class="button" onclick="Summon('÷')">÷</button><button type="button" class="button" onclick="Summon('log')">log</button><br>
 		<button type="button" class="button" onclick="Summon('%')">%</button><button type="button" class="button" onclick="Summon('in base')">B</button><button type="button" class="button" onclick="Reset()">C</button><br>
-		<button type="button" class="button2" onclick="Factorial()">!</button><button type="button" class="button2" onclick="getSin()">sin</button><button type="button" class="button2" onclick="getCos()">cos</button><button type="button" class="button2" onclick="getTan()">tan</button>
+		<button type="button" class="button2" onclick="Factorial()">!</button><button type="button" class="button2" onclick="getSin()">sin</button><button type="button" class="button2" onclick="getCos()">cos</button><button type="button" class="button2" onclick="getTan()">tan</button><button type="button" class="button2" onclick="getAbs()">abs</button>
 	</body>
 </html>
 <script type="text/javascript">var num1
@@ -101,6 +101,12 @@ function getCos() {
 function getTan() {
 	tempNum = Math.tan(num1);
 	window.alert("tan " + num1 + " = " + tempNum);
+	num1 = tempNum;
+	window.alert("You can now do math with the result or press C to start a new calculation");
+}
+function getAbs() {
+	tempNum = Math.abs(num1);
+	window.alert("|" + num1 + "| = " + tempNum);
 	num1 = tempNum;
 	window.alert("You can now do math with the result or press C to start a new calculation");
 }
