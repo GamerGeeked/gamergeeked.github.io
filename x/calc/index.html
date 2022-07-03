@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v4.5.1</title>
+		<title>xCalc v4.6.0</title>
 		<style>
 	.operation {
 		background-color: #005f3b;
@@ -60,12 +60,12 @@
 </style>
 	</head>
 	<body>
-		<div class="header">Calculator Experiment v4.5.1</div>
+		<div class="header">Calculator Experiment v4.6.0</div>
 		<button type="button" class="operation" onclick="GetOperation('+')">+</button><button type="button" class="operation" onclick="GetOperation('−')">−</button><button type="button" class="operation" onclick="GetOperation('^')">↑</button><button type="button" class="constant" onclick="GetConstant('π')">π</button><button type="button" class="constant" onclick="GetConstant('φ')">φ</button><br>
 		<button type="button" class="operation" onclick="GetOperation('×')">×</button><button type="button" class="operation" onclick="GetOperation('÷')">÷</button><button type="button" class="operation" onclick="GetOperation('√')">√</button><button type="button" class="constant" onclick="GetConstant('e')">e</button><button type="button" class="constant" onclick="GetConstant('?')">?</button><br>
 		<button type="button" class="operation" onclick="GetOperation('%')">%</button><button type="button" class="operation" onclick="GetOperation('in base')">B</button><button type="button" class="operation" onclick="GetOperation('log')">log</button><button type="button" class="clear" onclick="Reset()">C</button><br>
-		<button type="button" class="function" onclick="GetFunction('!')">!</button><button type="button" class="function" onclick="GetFunction('abs')">abs</button><button type="button" class="function" onclick="GetFunction('ln')">ln</button><button type="button" class="function" onclick="GetFunction('sin')">sin</button><button type="button" class="function" onclick="GetFunction('cos')">cos</button><button type="button" class="function" onclick="GetFunction('tan')">tan</button><button type="button" class="function" onclick="GetFunction('round')">rnd</button><br>
-		<button type="button" class="function" onclick="GetFunction('triangle')">Δ</button><button type="button" class="function" onclick="GetFunction('sign')">sign</button><button type="button" class="function" onclick="GetFunction('e ^')">e<sup>x</sup></button><button type="button" class="function" onclick="GetFunction('sinh')">sinh</button><button type="button" class="function" onclick="GetFunction('cosh')">cosh</button></button><button type="button" class="function" onclick="GetFunction('tanh')">tanh</button>
+		<button type="button" class="function" onclick="GetFunction('!')">!</button><button type="button" class="function" onclick="GetFunction('abs')">abs</button><button type="button" class="function" onclick="GetFunction('ln')">ln</button><button type="button" class="function" onclick="GetFunction('sin')">sin</button><button type="button" class="function" onclick="GetFunction('cos')">cos</button><button type="button" class="function" onclick="GetFunction('tan')">tan</button><button type="button" class="function" onclick="GetFunction('rad')">rad</button><button type="button" class="function" onclick="GetFunction('round')">rnd</button><br>
+		<button type="button" class="function" onclick="GetFunction('triangle')">Δ</button><button type="button" class="function" onclick="GetFunction('sign')">sign</button><button type="button" class="function" onclick="GetFunction('e ^')">e<sup>x</sup></button><button type="button" class="function" onclick="GetFunction('sinh')">sinh</button><button type="button" class="function" onclick="GetFunction('cosh')">cosh</button></button><button type="button" class="function" onclick="GetFunction('tanh')">tanh</button><button type="button" class="function" onclick="GetFunction('deg')">deg</button>
 	</body>
 </html>
 	</body>
@@ -145,6 +145,10 @@ function GetFunction(op) {
 		tempNum = Math.cosh(num1);
 	} else if (op == "tanh") {
 		tempNum = Math.tanh(num1);
+	} else if (op == "rad") {
+		tempNum = num1 * (Math.PI / 180);
+	} else if (op == "deg") {
+		tempNum = num1 / (Math.PI / 180);
 	} else {
 		window.alert("Error: Unknown Function");
 	} if (op != "!" && op != "abs") { window.alert(op + " " + num1 + " = " + tempNum); } num1 = tempNum;
