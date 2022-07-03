@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v3.2.0</title>
+		<title>xCalc v3.3.0</title>
 		<style>
 	.operation {
 		background-color: #005f3b;
@@ -48,7 +48,7 @@
 	} .header {
 		background-color: #005f3b;
 		color: white;
-		width: 375px;
+		width: 430px;
 		height: 50px;
 		text-align: center;
 		line-height: 50px;
@@ -60,8 +60,8 @@
 </style>
 	</head>
 	<body>
-		<div class="header">Calculator Experiment v3.2.0</div>
-		<button type="button" class="operation" onclick="GetOperation('+')">+</button><button type="button" class="operation" onclick="GetOperation('−')">−</button><button type="button" class="operation" onclick="GetOperation('^')">↑</button><button type="button" class="constant" onclick="GetConstant('π')">π</button><br>
+		<div class="header">Calculator Experiment v3.3.0</div>
+		<button type="button" class="operation" onclick="GetOperation('+')">+</button><button type="button" class="operation" onclick="GetOperation('−')">−</button><button type="button" class="operation" onclick="GetOperation('^')">↑</button><button type="button" class="constant" onclick="GetConstant('π')">π</button><button type="button" class="constant" onclick="GetConstant('φ')">φ</button><br>
 		<button type="button" class="operation" onclick="GetOperation('×')">×</button><button type="button" class="operation" onclick="GetOperation('÷')">÷</button><button type="button" class="operation" onclick="GetOperation('√')">√</button><button type="button" class="constant" onclick="GetConstant('e')">e</button><button type="button" class="constant" onclick="GetConstant('?')">?</button><br>
 		<button type="button" class="operation" onclick="GetOperation('%')">%</button><button type="button" class="operation" onclick="GetOperation('in base')">B</button><button type="button" class="operation" onclick="GetOperation('log')">log</button><button type="button" class="clear" onclick="Reset()">C</button><br>
 		<button type="button" class="function" onclick="GetFunction('!')">!</button><button type="button" class="function" onclick="GetFunction('abs')">abs</button><button type="button" class="function" onclick="GetFunction('ln')">ln</button><button type="button" class="function" onclick="GetFunction('sin')">sin</button><button type="button" class="function" onclick="GetFunction('cos')">cos</button><button type="button" class="function" onclick="GetFunction('tan')">tan</button><button type="button" class="function" onclick="GetFunction('round')">rnd</button>
@@ -139,6 +139,8 @@ function GetConstant(op) {
 		num1 = Math.E;
 	} else if (op == "?") {
 		num1 = Math.random();
+	} else if (op == "φ") {
+		num1 = 1.61803398874989484820
 	} else {
 		window.alert("Error: Unknown Constant");
 	} window.alert("First Number is Set to " + num1);
