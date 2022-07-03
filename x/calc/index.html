@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v3.1.2</title>
+		<title>xCalc v3.2.0</title>
 		<style>
 	.operation {
 		background-color: #005f3b;
@@ -60,10 +60,10 @@
 </style>
 	</head>
 	<body>
-		<div class="header">Calculator Experiment v3.1.2</div>
+		<div class="header">Calculator Experiment v3.2.0</div>
 		<button type="button" class="operation" onclick="GetOperation('+')">+</button><button type="button" class="operation" onclick="GetOperation('−')">−</button><button type="button" class="operation" onclick="GetOperation('^')">↑</button><button type="button" class="constant" onclick="GetConstant('π')">π</button><br>
-		<button type="button" class="operation" onclick="GetOperation('×')">×</button><button type="button" class="operation" onclick="GetOperation('÷')">÷</button><button type="button" class="operation" onclick="GetOperation('log')">log</button><button type="button" class="constant" onclick="GetConstant('e')">e</button><br>
-		<button type="button" class="operation" onclick="GetOperation('%')">%</button><button type="button" class="operation" onclick="GetOperation('in base')">B</button><button type="button" class="clear" onclick="Reset()">C</button><button type="button" class="constant" onclick="GetConstant('?')">?</button><br>
+		<button type="button" class="operation" onclick="GetOperation('×')">×</button><button type="button" class="operation" onclick="GetOperation('÷')">÷</button><button type="button" class="operation" onclick="GetOperation('√')">√</button><button type="button" class="constant" onclick="GetConstant('e')">e</button><button type="button" class="constant" onclick="GetConstant('?')">?</button><br>
+		<button type="button" class="operation" onclick="GetOperation('%')">%</button><button type="button" class="operation" onclick="GetOperation('in base')">B</button><button type="button" class="operation" onclick="GetOperation('log')">log</button><button type="button" class="clear" onclick="Reset()">C</button><br>
 		<button type="button" class="function" onclick="GetFunction('!')">!</button><button type="button" class="function" onclick="GetFunction('abs')">abs</button><button type="button" class="function" onclick="GetFunction('ln')">ln</button><button type="button" class="function" onclick="GetFunction('sin')">sin</button><button type="button" class="function" onclick="GetFunction('cos')">cos</button><button type="button" class="function" onclick="GetFunction('tan')">tan</button><button type="button" class="function" onclick="GetFunction('round')">rnd</button>
 	</body>
 </html>
@@ -88,6 +88,8 @@ function GetOperation(op) {
 		result = Number(num1)%Number(num2);
     } else if (op == "^") {
 		result = Number(num1)**Number(num2);
+    } else if (op == "√") {
+		result = Number(num1)**(1 / (Number(num2)));
     } else if (op == "log") {
 		result = Math.log(num1) / Math.log(num2);
     } else if (op == "%") {
