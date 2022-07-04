@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v4.19.0</title>
+		<title>xCalc v4.20.0</title>
 		<style>
 	.operation {
 		background-color: #005f3b;
@@ -69,9 +69,9 @@
 		background-color: #005f3b;
 		color: white;
 		width: 430px;
-		height: 50px;
+		height: 45px;
 		text-align: center;
-		line-height: 50px;
+		line-height: 45px;
 		margin: 5px 5px;
 		font-family: sans-serif;
 		font-size: 24px;
@@ -80,7 +80,7 @@
 </style>
 	</head>
 	<body>
-		<div class="header">Calculator Experiment v4.19.0</div>
+		<div class="header">Calculator Experiment v4.20.0</div>
 		<button class="operation" onclick="GetOperation('+')">+</button><button class="operation" onclick="GetOperation('−')">−</button><button class="operation" onclick="GetOperation('^')">↑</button><button class="clear" onclick="Reset()">C</button><br>
 		<button class="operation" onclick="GetOperation('×')">×</button><button class="operation" onclick="GetOperation('÷')">÷</button><button class="operation" onclick="GetOperation('√')">√</button><button class="constant" onclick="GetConstant('π')">π</button><button class="constant" onclick="GetConstant('φ')">φ</button><br>
 		<button class="operation" onclick="GetOperation('%')">%</button><button class="operation" onclick="GetOperation('in base')">B</button><button class="operation" onclick="GetOperation('log')">log</button><button class="constant" onclick="GetConstant('e')">e</button><button class="constant" onclick="GetConstant('?')">?</button><br>
@@ -88,7 +88,7 @@
 		<button class="geoFunction" onclick="GetFunction('sin')">sin</button><button class="geoFunction" onclick="GetFunction('asin')">asin</button><button class="geoFunction" onclick="GetFunction('tan')">tan</button><button class="geoFunction" onclick="GetFunction('atan')">atan</button><button class="geoFunction" onclick="GetFunction('rad')">rad</button><button class="geoOperation" onclick="GetOperation('hyp')">hypot</button><br>
 		<button class="geoFunction" onclick="GetFunction('sinh')">sinh</button><button class="geoFunction" onclick="GetFunction('asinh')">asinh</button></button><button class="geoFunction" onclick="GetFunction('tanh')">tanh</button><button class="geoFunction" onclick="GetFunction('atanh')">atanh</button><button class="geoFunction" onclick="GetFunction('deg')">deg</button><button class="geoOperation" onclick="GetOperation('average')">avg</button><br>
 		<button class="geoFunction" onclick="GetFunction('cos')">cos</button><button class="geoFunction" onclick="GetFunction('acos')">acos</button><button class="geoFunction" onclick="GetFunction('cot')">cot</button><button class="geoFunction" onclick="GetFunction('acot')">acot</button><br>
-		<button class="geoFunction" onclick="GetFunction('cosh')">cosh</button><button class="geoFunction" onclick="GetFunction('acosh')">acosh</button><button class="geoFunction" onclick="GetFunction('coth')">coth</button>
+		<button class="geoFunction" onclick="GetFunction('cosh')">cosh</button><button class="geoFunction" onclick="GetFunction('acosh')">acosh</button><button class="geoFunction" onclick="GetFunction('coth')">coth</button><button class="geoFunction" onclick="GetFunction('acoth')">acoth</button>
 	</body>
 </html>
 	</body>
@@ -193,7 +193,9 @@ function GetFunction(op) {
 	} else if (op == "coth") {
 		tempNum = 1 / Math.tanh(num1);
 	} else if (op == "acot") {
-		tempNum = 1 / Math.atan(1 / num1);
+		tempNum = Math.PI / 2 - Math.atan(num1);
+	} else if (op == "acoth") {
+		tempNum = (Math.log((1/num1)+1) - Math.log(1-(1/num1))) / 2
 	} else {
 		window.alert("Error: Unknown Function");
 	} if (op != "!" && op != "abs") { window.alert(op + " " + num1 + " = " + tempNum); } num1 = tempNum;
