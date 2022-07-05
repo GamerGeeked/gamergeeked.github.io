@@ -70,4 +70,16 @@
 	margin: 5px 5px;
 	font-family: sans-serif;
 	font-size: 24px;
-}
+}  body {
+	height:100%;
+	background-color: #fcfcfc;
+} .calculator {
+	position: absolute;
+	margin: auto;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 440px;
+	height: 570px;
+	border-radius: 3px;
