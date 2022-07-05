@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Calculator Experiment</title>
+		<style>
+			.button {
+				background-color: #005f3b;
+				border: none;
+				color: white;
+				padding: 15px 32px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				margin: 4px 2px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+	    <h1>Calculator</h1>
+		<p><button type="button" onclick="summon('+')">+</button><button type="button" onclick="summon('-')">-</button></p>
+		<p><button type="button" onclick="summon('*')">*</button><button type="button" onclick="summon('/')">/</button></p>
+		<p><button type="button" onclick="summon('%')">%<button type="button" onclick="reset()">C</button></p>
+	</body>
+</html>
+<script type="text/javascript">var n1
+function reset() {
+    n1 = prompt("First Number", "2");
+} 
+reset();
+var r
+function summon(op) {
+    var n2 = prompt("Second Number", "2");
+    if (op == "+") {
+	    r = Number(n1)+Number(n2);
+    } else if (op == "-") {
+	    r = Number(n1)-Number(n2);
+    } else if (op == "*") {
+	    r = Number(n1)*Number(n2);
+    } else if (op == "/") {
+	    r = Number(n1)/Number(n2);
+    } else if (op == "%") {
+	    r = Number(n1)%Number(n2);
+    } window.alert(n1 + " " + op + " " + n2 + " = " + r);
+	n1 = r;
+	window.alert("You can now do math with the result or press C to start a new calculation");
+}</script>
