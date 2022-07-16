@@ -23,6 +23,7 @@
 	height: 45px;
 	width: 45px;
 	margin: 5px;
+	float: left;
 } .function:hover {
 	background-color: white;
 	color: #5f003b;
@@ -60,10 +61,11 @@
 	color: white;
 	text-align: center;
 	display: inline-block;
-	font-size: 32px;
+	font-size: 24px;
 	height: 100px;
 	width: 45px;
 	margin: 5px;
+	float: right;
 } .constant:hover {
 	background-color: white;
 	color: #003b5f;
