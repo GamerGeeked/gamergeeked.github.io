@@ -8,6 +8,7 @@
 	height: 100px;
 	width: 100px;
 	margin: 5px;
+	float:  left;
 } .operation:hover {
 	background-color: white;
 	color: #005f3b;
@@ -23,7 +24,7 @@
 	height: 45px;
 	width: 45px;
 	margin: 5px;
-	float: left;
+	float: right;
 } .function:hover {
 	background-color: white;
 	color: #5f003b;
@@ -49,21 +50,24 @@
 	text-align: center;
 	display: inline-block;
 	font-size: 12px;
-	height: 20px;
+	height: 45px;
 	width: 45px;
 	margin: 5px;
+	float: right;
 } .geoOperation:hover {
 	background-color: white;
 	color: #005f3b;
+	border: solid;
+	border-width: 5px;
 } .constant {
 	background-color: #003b5f;
 	border: none;
 	color: white;
 	text-align: center;
 	display: inline-block;
-	font-size: 24px;
-	height: 100px;
-	width: 45px;
+	font-size: 16px;
+	height: 45px;
+	width: 100px;
 	margin: 5px;
 	float: right;
 } .constant:hover {
