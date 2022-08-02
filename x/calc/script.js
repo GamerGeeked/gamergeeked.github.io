@@ -12,15 +12,15 @@ function GetOperation(op) {
 	    result = Number(num1)+Number(num2);
     } else if (op == "−") {
 		result = Number(num1)-Number(num2);
-    } else if (op == "×") {
+    } else if (op == "*") {
 		result = Number(num1)*Number(num2);
-    } else if (op == "÷") {
+    } else if (op == "/") {
 		result = Number(num1)/Number(num2);
     } else if (op == "%") {
 		result = Number(num1)%Number(num2);
     } else if (op == "^") {
 		result = Number(num1)**Number(num2);
-    } else if (op == "√") {
+    } else if (op == "sqrt") {
 		result = Number(num1)**(1 / (Number(num2)));
     } else if (op == "log") {
 		result = Math.log(num1) / Math.log(num2);
@@ -121,9 +121,9 @@ function GetFunction(op) {
 	window.alert("You can now do math with the result or press a blue button to start a new calculation");
 }
 var constants = {
-	"π": Math.PI,
+	"pi": Math.PI,
 	"e": Math.E,
-	"φ": 1.61803398874989484820,
+	"phi": 1.61803398874989484820,
 }
 function GetConstant(op) {
 	num1 = constants[op]
@@ -131,4 +131,9 @@ function GetConstant(op) {
 		num1 = Math.random();
 	}
 	window.alert("First Number is Set to " + num1);
+}
+function SetNumberOne(set) {
+	num1 = set
+} function SetNumberTwo() {
+	num2 = set
 }
