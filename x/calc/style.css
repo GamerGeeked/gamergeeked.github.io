@@ -37,7 +37,7 @@
 	text-align: center;
 	display: inline-block;
 	font-size: 12px;
-	height: 20px;
+	height: 17.5px;
 	width: 45px;
 	margin: 5px;
 } .geoFunction:hover {
@@ -131,3 +131,32 @@
 	width: 440px;
 	height: 600px;
 	border-radius: 3px;
+} .input {
+	background-color: white;
+	color: black;
+	width: 356px;
+	height: 20px;
+	text-align: center;
+	line-height: 45px;
+	margin: 5px 5px;
+	font-family: sans-serif;
+	font-size: 16px;
+	border:  2px solid black;
+	border-width: 5px;
+	outline: none;
+	float: left;
+} .inputButton {
+	background-color: black;
+	border: none;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	font-size: 16px;
+	height: 30px;
+	width: 50px;
+	margin: 5px;
+	float: right;
+} .inputButton:hover {
+	background-color: #ffffff;
+	color: black;
+}
