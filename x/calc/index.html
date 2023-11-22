@@ -1,70 +1,70 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v5.2.5</title>
+		<title>xCalc v5.2.6</title>
 		<link rel='stylesheet' type='text/css' href='style.css'>
 	</head>
 	<body>
 		<div class="header"><a href="http://gamergeeked.us">home</a></div>
 		<div class="calculator">
-			<div class="title">Calculator Experiment v5.2.5</div><!--
+			<div class="title">Calculator Experiment v5.2.6</div><!--
 
 			Operations
-			--><button class="operation" style="font-size:48px;" onclick="GetOperation('+')">+</button><!--
-			--><button class="operation" style="font-size:48px;" onclick="GetOperation('-')">−</button><!--
-			--><button class="operation" onclick="GetOperation('^')">↑</button><!--
-			--><button class="clear" onclick="Reset()">C</button><br><!--
+			--><button class="operation largeButton" style="font-size:48px;" onclick="GetOperation('+')">+</button><!--
+			--><button class="operation largeButton" style="font-size:48px;" onclick="GetOperation('-')">−</button><!--
+			--><button class="operation largeButton" onclick="GetOperation('^')">↑</button><!--
+			--><button class="constant largeButton" onclick="Reset()">C</button><br><!--
 			
-			--><button class="operation" style="font-size:48px;" onclick="GetOperation('*')">×</button><!--
-			--><button class="operation" style="font-size:48px;" onclick="GetOperation('/')">÷</button><!--
-			--><button class="operation" onclick="GetOperation('sqrt')">√</button><!--
-			--><button class="constant" onclick="GetConstant('pi')">π</button><br>
-			<button class="constant" onclick="GetConstant('phi')">φ</button><br><!--
+			--><button class="operation largeButton" style="font-size:48px;" onclick="GetOperation('*')">×</button><!--
+			--><button class="operation largeButton" style="font-size:48px;" onclick="GetOperation('/')">÷</button><!--
+			--><button class="operation largeButton" onclick="GetOperation('sqrt')">√</button><!--
+			--><button class="constant longButton" onclick="GetConstant('pi')">π</button><br>
+			<button class="constant longButton" onclick="GetConstant('phi')">φ</button><br><!--
 			
-			--><button class="operation" onclick="GetOperation('%')">%</button><!--
-			--><button class="operation" onclick="GetOperation('in base')">B</button><!--
-			--><button class="operation" onclick="GetOperation('log')">log</button><!--
-			--><button class="constant" onclick="GetConstant('e')">e</button><!--
-			--><br><button class="constant" onclick="GetConstant('?')">?</button><br><!--
+			--><button class="operation largeButton" onclick="GetOperation('%')">%</button><!--
+			--><button class="operation largeButton" onclick="GetOperation('in base')">B</button><!--
+			--><button class="operation largeButton" onclick="GetOperation('log')">log</button><!--
+			--><button class="constant longButton" onclick="GetConstant('e')">e</button><!--
+			--><br><button class="constant longButton" onclick="GetConstant('?')">?</button><br><!--
 			
 			Functions
-			--><button class="function" onclick="GetFunction('random number between 0 and')">rng</button><br><!--
-			--><button class="function" onclick="GetFunction('round')">rnd</button><!--
-			--><button class="function" onclick="GetFunction('e ^')">e<sup>x</sup></button><!--
-			--><button class="function" onclick="GetFunction('sign')">sign</button><!--
-			--><button class="function" onclick="GetFunction('ln')">ln</button><!--
-			--><button class="function" onclick="GetFunction('abs')">abs</button><!--
-			--><button class="function" onclick="GetFunction('triangle')">Δ</button><!--
-			--><button class="function" onclick="GetFunction('!')">!</button><!--
+			--><button class="function smallButton" onclick="GetFunction('random number between 0 and')">rng</button><br><!--
+			--><button class="function smallButton" onclick="GetFunction('round')">rnd</button><!--
+			--><button class="function smallButton" onclick="GetFunction('e ^')">e<sup>x</sup></button><!--
+			--><button class="function smallButton" onclick="GetFunction('sign')">sign</button><!--
+			--><button class="function smallButton" onclick="GetFunction('ln')">ln</button><!--
+			--><button class="function smallButton" onclick="GetFunction('abs')">abs</button><!--
+			--><button class="function smallButton" onclick="GetFunction('triangle')">Δ</button><!--
+			--><button class="function smallButton" onclick="GetFunction('!')">!</button><!--
 			
 			Geometric Functions
-			--><button class="geoFunction" onclick="GetFunction('sin')">sin</button><!--
-			--><button class="geoFunction" onclick="GetFunction('asin')">asin</button><!--
-			--><button class="geoFunction" onclick="GetFunction('tan')">tan</button><!--
-			--><button class="geoFunction" onclick="GetFunction('atan')">atan</button><!--
-			--><button class="geoFunction" onclick="GetFunction('sec')">sec</button><!--
-			--><button class="function" onclick="GetFunction('rad')">rad</button><!--
-			--><button class="geoOperation" onclick="GetOperation('hyp')">hypot</button><br><!--
+			--><button class="function thinButton" onclick="GetFunction('sin')">sin</button><!--
+			--><button class="function thinButton" onclick="GetFunction('asin')">asin</button><!--
+			--><button class="function thinButton" onclick="GetFunction('tan')">tan</button><!--
+			--><button class="function thinButton" onclick="GetFunction('atan')">atan</button><!--
+			--><button class="function thinButton" onclick="GetFunction('sec')">sec</button><!--
+			--><button class="function smallButton" onclick="GetFunction('rad')">rad</button><!--
+			--><button class="operation smallButton" onclick="GetOperation('hyp')">hypot</button><br><!--
 			
-			--><button class="geoFunction" onclick="GetFunction('sinh')">sinh</button><!--
-			--><button class="geoFunction" onclick="GetFunction('asinh')">asinh</button><!--
-			--><button class="geoFunction" onclick="GetFunction('tanh')">tanh</button><!--
-			--><button class="geoFunction" onclick="GetFunction('atanh')">atanh</button><!--
-			--><button class="geoFunction" onclick="GetFunction('sech')">sech</button><br><!--
+			--><button class="function thinButton" onclick="GetFunction('sinh')">sinh</button><!--
+			--><button class="function thinButton" onclick="GetFunction('asinh')">asinh</button><!--
+			--><button class="function thinButton" onclick="GetFunction('tanh')">tanh</button><!--
+			--><button class="function thinButton" onclick="GetFunction('atanh')">atanh</button><!--
+			--><button class="function thinButton" onclick="GetFunction('sech')">sech</button><br><!--
 			
-			--><button class="geoFunction" onclick="GetFunction('cos')">cos</button><!--
-			--><button class="geoFunction" onclick="GetFunction('acos')">acos</button><!--
-			--><button class="geoFunction" onclick="GetFunction('cot')">cot</button><!--
-			--><button class="geoFunction" onclick="GetFunction('acot')">acot</button><!--
-			--><button class="geoFunction" onclick="GetFunction('csc')">csc</button><!--
-			--><button class="function" onclick="GetFunction('deg')">deg</button><!--
-			--><button class="geoOperation" onclick="GetOperation('average')">avg</button><br><!--
+			--><button class="function thinButton" onclick="GetFunction('cos')">cos</button><!--
+			--><button class="function thinButton" onclick="GetFunction('acos')">acos</button><!--
+			--><button class="function thinButton" onclick="GetFunction('cot')">cot</button><!--
+			--><button class="function thinButton" onclick="GetFunction('acot')">acot</button><!--
+			--><button class="function thinButton" onclick="GetFunction('csc')">csc</button><!--
+			--><button class="function smallButton" onclick="GetFunction('deg')">deg</button><!--
+			--><button class="operation smallButton" onclick="GetOperation('average')">avg</button><br><!--
 			
-			--><button class="geoFunction" onclick="GetFunction('cosh')">cosh</button><!--
-			--><button class="geoFunction" onclick="GetFunction('acosh')">acosh</button><!--
-			--><button class="geoFunction" onclick="GetFunction('coth')">coth</button><!--
-			--><button class="geoFunction" onclick="GetFunction('acoth')">acoth</button><!--
-			--><button class="geoFunction" onclick="GetFunction('csch')">csch</button>
+			--><button class="function thinButton" onclick="GetFunction('cosh')">cosh</button><!--
+			--><button class="function thinButton" onclick="GetFunction('acosh')">acosh</button><!--
+			--><button class="function thinButton" onclick="GetFunction('coth')">coth</button><!--
+			--><button class="function thinButton" onclick="GetFunction('acoth')">acoth</button><!--
+			--><button class="function thinButton" onclick="GetFunction('csch')">csch</button>
 		</div>
 	</body>
 </html>
