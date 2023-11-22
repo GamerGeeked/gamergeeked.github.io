@@ -139,7 +139,7 @@ function SetNumberOne(set) {
 }
 var data = 0
 function WriteData() {
-	data = prompt("Value to be stored", 0);
+	data = num1;
 	window.alert("Data value " + data + " stored.");
 }
 function ReadData() {
