@@ -4,9 +4,6 @@
 	color: white;
 	text-align: center;
 	display: inline-block;
-	font-size: 32px;
-	height: 100px;
-	width: 100px;
 	margin: 5px;
 	float:  left;
 } .operation:hover {
@@ -20,43 +17,9 @@
 	color: white;
 	text-align: center;
 	display: inline-block;
-	font-size: 16px;
-	height: 45px;
-	width: 45px;
-	margin: 5px;
-	float: right;
 } .function:hover {
 	background-color: white;
 	color: #5f003b;
-	border: solid;
-	border-width: 5px;
-} .geoFunction {
-	background-color: #5f003b;
-	border: none;
-	color: white;
-	text-align: center;
-	display: inline-block;
-	font-size: 12px;
-	height: 17.5px;
-	width: 45px;
-	margin: 5px;
-} .geoFunction:hover {
-	background-color: white;
-	color: #5f003b;
-} .geoOperation {
-	background-color: #005f3b;
-	border: none;
-	color: white;
-	text-align: center;
-	display: inline-block;
-	font-size: 12px;
-	height: 45px;
-	width: 45px;
-	margin: 5px;
-	float: right;
-} .geoOperation:hover {
-	background-color: white;
-	color: #005f3b;
 	border: solid;
 	border-width: 5px;
 } .constant {
@@ -65,31 +28,40 @@
 	color: white;
 	text-align: center;
 	display: inline-block;
-	font-size: 16px;
-	height: 45px;
-	width: 100px;
-	margin: 5px;
 	float: right;
 } .constant:hover {
 	background-color: white;
 	color: #003b5f;
 	border: solid;
 	border-width: 5px;
-} .clear {
-	background-color: #003b5f;
-	border: none;
-	color: white;
-	text-align: center;
-	display: inline-block;
+} .largeButton {
 	font-size: 32px;
 	height: 100px;
 	width: 100px;
 	margin: 5px;
-} .clear:hover {
-	background-color: white;
-	color: #003b5f;
-	border: solid;
-	border-width: 5px;
+} .smallButton {
+	font-size: 12px;
+	height: 45px;
+	width: 45px;
+	margin: 5px;
+	float:  right;
+} .thinButton {
+	font-size: 12px;
+	height: 17.5px;
+	width: 45px;
+	margin: 5px;
+} .longButton {
+	font-size: 16px;
+	height: 45px;
+	width: 100px;
+	margin: 5px;
+	float: right;
+} .tallButton {
+	font-size: 16px;
+	height: 100px;
+	width: 45px;
+	margin: 5px;
+	float: right;
 } .title {
 	background-color: #005f3b;
 	color: white;
