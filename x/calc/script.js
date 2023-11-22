@@ -137,3 +137,12 @@ function SetNumberOne(set) {
 } function SetNumberTwo() {
 	num2 = set
 }
+var data = 0
+function WriteData() {
+	data = prompt("Value to be stored", 0);
+	window.alert("Data value " + data + " stored.");
+}
+function ReadData() {
+	num1 = data
+	window.alert("First Number is Set to " + num1);
+}
