@@ -3,10 +3,12 @@ var result;
 var originalBase;
 var tempNum;
 var dyn = document.getElementById("dyn");
-var field = document.getElementById("field");
-var confirmButton = document.getElementById("confirmButton");
 var numRequested;
 var opRequested;
+
+var field = document.getElementById("field");
+var inputOptions = document.getElementById("inputOptions");
+
 function DoAlert(q) {
 	dyn.innerHTML = q;
 } function DoPrompt(q) {
@@ -120,11 +122,10 @@ function GetFunction(op) {
 	num[0] = result;
 }
 function RequestInput(numID, op) {
-	field.style.display = "block";
-	confirmButton.style.display = "block";
+	inputOptions.style.display = "block";
 	numRequested = numID;
 	opRequested = op;
-	DoAlert("Please input a value for Number " + numRequested);
+	DoAlert("Please input a value for Number " + (numRequested + 1));
 }
 function DoInput(type, value) {
 	if(num[0] == null) {
@@ -143,9 +144,8 @@ function DoInput(type, value) {
 	if (opRequested != null) {
 		GetOperation(opRequested);
 	} else {
-		DoAlert("Number " + numRequested + " set to " + num[0]);
+		DoAlert("Number " + (numRequested + 1) + " set to " + num[0]);
 	}
-	field.style.display = "none";
-	confirmButton.style.display = "none";
+	inputOptions.style.display = "none";
 }
 RequestInput(0);
