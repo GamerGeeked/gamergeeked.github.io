@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v5.3.1</title>
+		<title>xCalc v6.0.0</title>
 		<link rel='stylesheet' type='text/css' href='style.css'>
 	</head>
 	<body>
 		<div class="header"><a href="http://gamergeeked.us">home</a></div>
 		<div class="calculator">
-			<div class="title">Calculator Experiment v5.3.1</div><!--
+			<div class="title"><span class="titleText" id="dyn"><b>Calculator Experiment v6.0.0</b></div><!--
 
-			Operations
-			--><button class="operation largeButton" style="font-size:48px;" onclick="GetOperation('+')">+</button><!--
-			--><button class="operation largeButton" style="font-size:48px;" onclick="GetOperation('-')">−</button><!--
-			--><button class="operation largeButton" onclick="GetOperation('^')">↑</button><!--
-			--><button class="constant largeButton" onclick="Reset()">C</button><br><!--
+				Operations
+			--><button class="operation largeButton" style="font-size:48px;" onclick="RequestInput(1, '+')">+</button><!--
+			--><button class="operation largeButton" style="font-size:48px;" onclick="RequestInput(1, '-')">−</button><!--
+			--><button class="operation largeButton" onclick="RequestInput(1, '^')">↑</button><!--
+			--><button class="constant largeButton" onclick="RequestInput(0)">C</button><br><!--
 			
-			--><button class="operation largeButton" style="font-size:48px;" onclick="GetOperation('*')">×</button><!--
-			--><button class="operation largeButton" style="font-size:48px;" onclick="GetOperation('/')">÷</button><!--
-			--><button class="operation largeButton" onclick="GetOperation('sqrt')">√</button><!--
-			--><button class="constant smallButton" onclick="GetConstant('pi')">π</button><!--
-			--><button class="constant smallButton" onclick="GetConstant('phi')">φ</button><br><!--
-			--><button class="constant smallButton" onclick="GetConstant('e')">e</button><!--
-			--><button class="constant smallButton" onclick="GetConstant('?')">?</button><br><!--
+			--><button class="operation largeButton" style="font-size:48px;" onclick="RequestInput(1, '*')">×</button><!--
+			--><button class="operation largeButton" style="font-size:48px;" onclick="RequestInput(1, '/')">÷</button><!--
+			--><button class="operation largeButton" onclick="RequestInput(1, 'sqrt')">√</button><!--
+			--><button class="constant smallButton" onclick="DoInput('c', Math.PI)">π</button><!--
+			--><button class="constant smallButton" onclick="DoInput('c', 1.61803398874989484820)">φ</button><br><!--
+			--><button class="constant smallButton" onclick="DoInput('c', Math.E)">e</button><!--
+			--><button class="constant smallButton" onclick="DoInput('c', result)">ans</button><br><!--
 			
-			--><button class="operation largeButton" onclick="GetOperation('%')">%</button><!--
-			--><button class="operation largeButton" onclick="GetOperation('in base')">B</button><!--
-			--><button class="operation largeButton" onclick="GetOperation('log')">log</button><!--
-			--><button class="constant longButton" onclick="ReadData()">Read</button><!--
-			--><br><button class="constant longButton" onclick="WriteData()">Write</button><br><!--
+			--><button class="operation largeButton" onclick="RequestInput(1, '%')">mod</button><!--
+			--><button class="operation tallButton" onclick="RequestInput(1, 'base')">B</button><!--
+			--><button class="operation tallButton" onclick="RequestInput(1, 'dec')">B10</button><!--
+			--><button class="operation largeButton" onclick="RequestInput(1, 'log')">log</button><!--
+			--><button class="constant smallButton" onclick="DoInput('v', 2)">x</button><button class="function smallButton" onclick="RequestInput(2)">x</button><br><!--
+			--><button class="constant smallButton" onclick="DoInput('v', 2)">y</button><button class="function smallButton" onclick="RequestInput(3)">y</button><br><!--
 			
-			Functions
-			--><button class="function smallButton" onclick="GetFunction('random number between 0 and')">rng</button><br><!--
+				Functions
+			--><button class="function smallButton" onclick="GetFunction('rng')">?</button><br><!--
 			--><button class="function smallButton" onclick="GetFunction('round')">rnd</button><!--
 			--><button class="function smallButton" onclick="GetFunction('e ^')">e<sup>x</sup></button><!--
 			--><button class="function smallButton" onclick="GetFunction('sign')">sign</button><!--
@@ -39,14 +40,14 @@
 			--><button class="function smallButton" onclick="GetFunction('triangle')">Δ</button><!--
 			--><button class="function smallButton" onclick="GetFunction('!')">!</button><!--
 			
-			Geometric Functions
+				Geometric Functions
 			--><button class="function thinButton" onclick="GetFunction('sin')">sin</button><!--
 			--><button class="function thinButton" onclick="GetFunction('asin')">asin</button><!--
 			--><button class="function thinButton" onclick="GetFunction('tan')">tan</button><!--
 			--><button class="function thinButton" onclick="GetFunction('atan')">atan</button><!--
 			--><button class="function thinButton" onclick="GetFunction('sec')">sec</button><!--
 			--><button class="function smallButton" onclick="GetFunction('rad')">rad</button><!--
-			--><button class="operation smallButton" onclick="GetOperation('hyp')">hypot</button><br><!--
+			--><button class="operation smallButton" onclick="RequestInput(1, 'hyp')">hypot</button><br><!--
 			
 			--><button class="function thinButton" onclick="GetFunction('sinh')">sinh</button><!--
 			--><button class="function thinButton" onclick="GetFunction('asinh')">asinh</button><!--
@@ -60,13 +61,15 @@
 			--><button class="function thinButton" onclick="GetFunction('acot')">acot</button><!--
 			--><button class="function thinButton" onclick="GetFunction('csc')">csc</button><!--
 			--><button class="function smallButton" onclick="GetFunction('deg')">deg</button><!--
-			--><button class="operation smallButton" onclick="GetOperation('average')">avg</button><br><!--
+			--><button class="operation smallButton" onclick="RequestInput(1, 'average')">avg</button><br><!--
 			
 			--><button class="function thinButton" onclick="GetFunction('cosh')">cosh</button><!--
 			--><button class="function thinButton" onclick="GetFunction('acosh')">acosh</button><!--
 			--><button class="function thinButton" onclick="GetFunction('coth')">coth</button><!--
 			--><button class="function thinButton" onclick="GetFunction('acoth')">acoth</button><!--
-			--><button class="function thinButton" onclick="GetFunction('csch')">csch</button>
+			--><button class="function thinButton" onclick="GetFunction('csch')">csch</button><!--
+			
+			--><input type="number" id="field"></input><button class="inputButton" id="confirmButton" onclick="DoInput('f')">Confirm</button>
 		</div>
 	</body>
 </html>
