@@ -8,25 +8,25 @@ var confirmButton = document.getElementById("confirmButton");
 var numRequested;
 var opRequested;
 function DoAlert(q) {
-	dyn.innerHTML = "<b>Calculator Experiment v6.0.0</b><br>" + q;
+	dyn.innerHTML = q;
 } function DoPrompt(q) {
 	DoAlert(q);
 	return field.value;
 } function GetOperation(op) {
     if (op == "+") {
-	    result = Number(num[0])+Number(num[1]);
-    } else if (op == "−") {
-		result = Number(num[0])-Number(num[1]);
+	    result = Number(num[0]) + Number(num[1]);
+    } else if (op == "-") {
+		result = Number(num[0]) - Number(num[1]);
     } else if (op == "*") {
-		result = Number(num[0])*Number(num[1]);
+		result = Number(num[0]) * Number(num[1]);
     } else if (op == "/") {
-		result = Number(num[0])/Number(num[1]);
+		result = Number(num[0]) / Number(num[1]);
     } else if (op == "%") {
-		result = Number(num[0])%Number(num[1]);
+		result = Number(num[0]) % Number(num[1]);
     } else if (op == "^") {
-		result = Number(num[0])**Number(num[1]);
+		result = Number(num[0]) ** Number(num[1]);
     } else if (op == "sqrt") {
-		result = Number(num[0])**(1 / (Number(num[1])));
+		result = Number(num[0]) ** (1 / (Number(num[1])));
     } else if (op == "log") {
 		result = Math.log(num[0]) / Math.log(num[1]);
     } else if (op == "%") {
@@ -43,7 +43,6 @@ function DoAlert(q) {
 		DoAlert("Error: Unknown Operation");
 	} DoAlert(result);
 	num[0] = result;
-	//DoAlert("You can now do math with the result or press a blue button to start a new calculation");
 } function GetFactorial() {
 	tempNum = Number(num[0]);
 	for(i = tempNum - 1; i >= 1; i--) {
@@ -138,7 +137,7 @@ function DoInput(type, value) {
 	} else if (type == "v") {
 		num[numRequested] = num[value];
 	} else {
-		num[numRequested] = "ERROR"
+		DoAlert("Error: Unknown Input Type");
 	}
 	//console.log(numRequested + " -> " + num[numRequested]);
 	if (opRequested != null) {
