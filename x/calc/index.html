@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v6.1.0</title>
+		<title>xCalc v6.2.0</title>
 		<link rel='stylesheet' type='text/css' href='style.css'>
 	</head>
 	<body>
 		<div class="header"><a href="http://gamergeeked.us">home</a></div>
 		<div class="calculator">
-			<div class="title"><b>Calculator Experiment v6.1.0</b><br><span id="dyn"></div><!--
+			<div class="title"><b>xCalc v6.2.0</b><br><span id="dyn"></div><!--
 
+					OUTPUT OPTIONS
 				Operations
-			--><button class="operation largeButton" style="font-size:48px;" onclick="RequestInput(1, '+')">+</button><!--
+			--><div id = "outputOptions"><button class="operation largeButton" style="font-size:48px;" onclick="RequestInput(1, '+')">+</button><!--
 			--><button class="operation largeButton" style="font-size:48px;" onclick="RequestInput(1, '-')">−</button><!--
 			--><button class="operation largeButton" onclick="RequestInput(1, '^')">↑</button><!--
-			--><button class="setter longButton" onclick="RequestInput(0)">C</button><br><!--
-			--><button class="setter smallButton" onclick="RequestInput(3)">set<br>y</button><!--
-			--><button class="setter smallButton" onclick="RequestInput(2)">set<br>x</button><!--
-			--><button class="function smallButton" onclick="GetFunction('sign')">sign</button><!--
-			--><button class="function smallButton" onclick="GetFunction('abs')">abs</button><br><!--
+			--><button class="setter largeButton" onclick="RequestInput(0)">C</button><br><!--
 			
 			--><button class="operation largeButton" style="font-size:48px;" onclick="RequestInput(1, '*')">×</button><!--
 			--><button class="operation largeButton" style="font-size:48px;" onclick="RequestInput(1, '/')">÷</button><!--
 			--><button class="operation largeButton" onclick="RequestInput(1, 'sqrt')">√</button><!--
+			--><button class="setter smallButton" onclick="RequestInput(3)">y</button><!--
+			--><button class="setter smallButton" onclick="RequestInput(2)">x</button><!--
 			--><button class="function smallButton" onclick="GetFunction('e ^')">e<sup>x</sup></button><!--
 			--><button class="function smallButton" onclick="GetFunction('ln')">ln</button><br><!--
 
 			--><button class="function smallButton" onclick="GetFunction('rng')">?</button><!--
 			--><button class="function smallButton" onclick="GetFunction('round')">rnd</button><!--
-			--><button class="operation smallButton" onclick="RequestInput(1, 'hyp')">hypot</button><!--
-			--><button class="operation smallButton" onclick="RequestInput(1, '%')">mod</button><!--
-			--><button class="operation smallButton" onclick="RequestInput(1, 'base')">B</button><!--
-			--><button class="operation smallButton" onclick="RequestInput(1, 'dec')">B10</button><!--
-			--><button class="operation smallButton" onclick="RequestInput(1, 'log')">log</button><!--
-			--><button class="operation smallButton" onclick="RequestInput(1, 'average')">avg</button><br><!--
+			--><button class="operation longButton" onclick="RequestInput(1, 'hyp')">hypot</button><!--
+			--><button class="operation longButton" onclick="RequestInput(1, '%')">mod</button><!--
+			--><button class="operation longButton" onclick="RequestInput(1, 'base')">base</button><!--
+
+			--><button class="function smallButton" onclick="GetFunction('sign')">sign</button><!--
+			--><button class="function smallButton" onclick="GetFunction('abs')">abs</button><!--
+			--><button class="operation longButton" onclick="RequestInput(1, 'log')">log</button><!--
+			--><button class="operation longButton" onclick="RequestInput(1, 'average')">avg</button><!--
+			--><button class="operation longButton" onclick="RequestInput(1, 'dec')">dec</button><br><!--
 			--><button class="function smallButton" onclick="GetFunction('triangle')">Δ</button><!--
 			--><button class="function smallButton" onclick="GetFunction('!')">!</button><!--
 
@@ -61,20 +63,24 @@
 			--><button class="function thinButton" onclick="GetFunction('acosh')">acosh</button><!--
 			--><button class="function thinButton" onclick="GetFunction('coth')">coth</button><!--
 			--><button class="function thinButton" onclick="GetFunction('acoth')">acoth</button><!--
-			--><button class="function thinButton" onclick="GetFunction('csch')">csch</button><!--
+			--><button class="function thinButton" onclick="GetFunction('csch')">csch</button></div><!--
 			
-				Input Options
+
+					INPUT OPTIONS
+				Custom Input
 			--><div id = "inputOptions"><input type="number" id="field"></input><!--
 			--><button class="inputButton" onclick="DoInput('f')" id="confirmButton">Confirm</button><br><!--
 			
-			--><button class="constant smallButton" onclick="DoInput('v', 2)" id="constant1">get<br>y</button><!--
-			--><button class="constant smallButton" onclick="DoInput('v', 2)" id="constant2">get<br>x</button><!--
-			--><button class="constant smallButton" onclick="DoInput('c', Math.PI)" id="constant3">π</button><!--
-			--><button class="constant smallButton" onclick="DoInput('c', 1.61803398874989484820)" id="constant4">φ</button><!--
-			--><button class="constant smallButton" onclick="DoInput('c', Math.SQRT2)" id="constant5">√2</button><!--
-			--><button class="constant smallButton" onclick="DoInput('c', Math.LN2)" id="constant6">ln 2</button><!--
-			--><button class="constant smallButton" onclick="DoInput('c', Math.E)" id="constant7">e</button><!--
-			--><button class="constant smallButton" onclick="DoInput('c', result)" id="constant8">ans</button></div>
+				Constants
+			--><button class="constant largeButton" onclick="DoInput('v', 2)" id="constant1">y</button><!--
+			--><button class="constant largeButton" onclick="DoInput('v', 2)" id="constant2">x</button><!--
+			--><button class="constant largeButton" onclick="DoInput('c', Math.PI)" id="constant3">π</button><!--
+			--><button class="constant largeButton" onclick="DoInput('c', 1.61803398874989484820)" id="constant4">φ</button><br><!--
+			
+			--><button class="constant largeButton" onclick="DoInput('c', Math.SQRT2)" id="constant5">√2</button><!--
+			--><button class="constant largeButton" onclick="DoInput('c', Math.LN2)" id="constant6">ln 2</button><!--
+			--><button class="constant largeButton" onclick="DoInput('c', Math.E)" id="constant7">e</button><!--
+			--><button class="constant largeButton" onclick="DoInput('c', result)" id="constant8">ans</button></div>
 		</div>
 	</body>
 </html>

@@ -8,6 +8,7 @@ var opRequested;
 
 var field = document.getElementById("field");
 var inputOptions = document.getElementById("inputOptions");
+var outputOptions = document.getElementById("outputOptions");
 
 function DoAlert(q) {
 	dyn.innerHTML = q;
@@ -123,6 +124,8 @@ function GetFunction(op) {
 }
 function RequestInput(numID, op) {
 	inputOptions.style.display = "block";
+	outputOptions.style.display = "none";
+	field.select();
 	numRequested = numID;
 	opRequested = op;
 	DoAlert("Please input a value for Number " + (numRequested + 1));
@@ -147,5 +150,6 @@ function DoInput(type, value) {
 		DoAlert("Number " + (numRequested + 1) + " set to " + num[0]);
 	}
 	inputOptions.style.display = "none";
+	outputOptions.style.display = "block";
 }
 RequestInput(0);
