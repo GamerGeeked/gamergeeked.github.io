@@ -16,35 +16,51 @@ function DoAlert(q) {
 	DoAlert(q);
 	return field.value;
 } function GetOperation(op) {
-    if (op == "+") {
-	    result = Number(num[0]) + Number(num[1]);
-    } else if (op == "-") {
-		result = Number(num[0]) - Number(num[1]);
-    } else if (op == "*") {
-		result = Number(num[0]) * Number(num[1]);
-    } else if (op == "/") {
-		result = Number(num[0]) / Number(num[1]);
-    } else if (op == "%") {
-		result = Number(num[0]) % Number(num[1]);
-    } else if (op == "^") {
-		result = Number(num[0]) ** Number(num[1]);
-    } else if (op == "sqrt") {
-		result = Number(num[0]) ** (1 / (Number(num[1])));
-    } else if (op == "log") {
-		result = Math.log(num[0]) / Math.log(num[1]);
-    } else if (op == "%") {
-		result = Number(num[0])%Number(num[1]);
-    } else if (op == "hyp") {
-		result = Math.hypot(num[0], num[1]);
-    } else if (op == "average") {
-		result = (Number(num[0]) + Number(num[1]))/2;
-    } else if (op == "base") {
-		result = Number(num[0]).toString(num[1]);
-	} else if (op == "dec") {
-		result = parseInt(num[0], num[1]);
-	} else {
-		DoAlert("Error: Unknown Operation");
-	} DoAlert(result);
+	switch (op) {
+		case "+":
+			result = Number(num[0]) + Number(num[1]);
+			break;
+		case "-":
+			result = Number(num[0]) - Number(num[1]);
+			break;
+		case "*":
+			result = Number(num[0]) * Number(num[1]);
+			break;
+		case "/":
+			result = Number(num[0]) / Number(num[1]);
+			break;
+		case "%":
+			result = Number(num[0]) % Number(num[1]);
+			break;
+		case "^":
+			result = Number(num[0]) ** Number(num[1]);
+			break;
+		case "sqrt":
+			result = Number(num[0]) ** (1 / (Number(num[1])));
+			break;
+		case "log":
+			result = Math.log(num[0]) / Math.log(num[1]);
+			break;
+		case "%":
+			result = Number(num[0])%Number(num[1]);
+			break;
+		case "hyp":
+			result = Math.hypot(num[0], num[1]);
+			break;
+		case "average":
+			result = (Number(num[0]) + Number(num[1]))/2;
+			break;
+		case "base":
+			result = Number(num[0]).toString(num[1]);
+			break;
+		case "dec":
+			result = parseInt(num[0], num[1]);
+			break;
+		default:
+			DoAlert("Error: Unknown Operation");
+			return;
+	}
+	DoAlert(result);
 	num[0] = result;
 } function GetFactorial() {
 	tempNum = Number(num[0]);
@@ -134,16 +150,20 @@ function DoInput(type, value) {
 	if(num[0] == null) {
 		return
 	}
-	if (type == "c") {
-		num[numRequested] = value;
-	} else if (type == "f") {
-		num[numRequested] = field.value;
-	} else if (type == "v") {
-		num[numRequested] = num[value];
-	} else {
-		DoAlert("Error: Unknown Input Type");
+	switch (type) {
+		case "c":
+			num[numRequested] = value;
+			break;
+		case "f":
+			num[numRequested] = field.value;
+			break;
+		case "v":
+			num[numRequested] = num[value];
+			break;
+		default:
+			DoAlert("Error: Unknown Input Type");
+			return;
 	}
-	//console.log(numRequested + " -> " + num[numRequested]);
 	if (opRequested != null) {
 		GetOperation(opRequested);
 	} else {
