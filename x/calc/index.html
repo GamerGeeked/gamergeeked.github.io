@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v6.2.2</title>
+		<title>xCalc v6.2.3</title>
 		<link rel='stylesheet' type='text/css' href='style.css'>
 	</head>
 	<body>
 		<div class="header"><a href="http://gamergeeked.us">home</a></div>
 		<div class="calculator">
-			<div class="title"><b>xCalc v6.2.2</b><br><span id="dyn"></div><!--
+			<div class="title"><b>xCalc v6.2.3</b><br><span id="dyn"></div><!--
 
 					OUTPUT OPTIONS
 				Operations
@@ -68,18 +68,18 @@
 					INPUT OPTIONS
 				Custom Input
 			--><div id = "inputOptions"><input type="number" id="field"></input><!--
-			--><button class="inputButton" onclick="DoInput('f')" id="confirmButton">Confirm</button><br><!--
+			--><button class="inputButton" onclick="DoInput('field')" id="confirmButton">Confirm</button><br><!--
 			
 				Constants
-			--><button class="constant largeButton" onclick="DoInput('v', 2)" id="constant1">y</button><!--
-			--><button class="constant largeButton" onclick="DoInput('v', 2)" id="constant2">x</button><!--
-			--><button class="constant largeButton" onclick="DoInput('c', Math.PI)" id="constant3">π</button><!--
-			--><button class="constant largeButton" onclick="DoInput('c', 1.61803398874989484820)" id="constant4">φ</button><br><!--
+			--><button class="constant largeButton" onclick="DoInput('variable', 2)" id="constant1">y</button><!--
+			--><button class="constant largeButton" onclick="DoInput('variable', 2)" id="constant2">x</button><!--
+			--><button class="constant largeButton" onclick="DoInput('constant', Math.PI)" id="constant3">π</button><!--
+			--><button class="constant largeButton" onclick="DoInput('constant', 1.61803398874989484820)" id="constant4">φ</button><br><!--
 			
-			--><button class="constant largeButton" onclick="DoInput('c', Math.SQRT2)" id="constant5">√2</button><!--
-			--><button class="constant largeButton" onclick="DoInput('c', Math.LN2)" id="constant6">ln 2</button><!--
-			--><button class="constant largeButton" onclick="DoInput('c', Math.E)" id="constant7">e</button><!--
-			--><button class="constant largeButton" onclick="DoInput('c', result)" id="constant8">ans</button></div>
+			--><button class="constant largeButton" onclick="DoInput('constant', Math.SQRT2)" id="constant5">√2</button><!--
+			--><button class="constant largeButton" onclick="DoInput('constant', Math.LN2)" id="constant6">ln 2</button><!--
+			--><button class="constant largeButton" onclick="DoInput('constant', Math.E)" id="constant7">e</button><!--
+			--><button class="constant largeButton" onclick="DoInput('constant', result)" id="constant8">ans</button></div>
 		</div>
 	</body>
 </html>

@@ -120,13 +120,13 @@ function DoInput(type, value) {
 		return
 	}
 	switch (type) {
-		case "c":
+		case "constant":
 			num[numRequested] = value;
 			break;
-		case "f":
+		case "field":
 			num[numRequested] = field.value;
 			break;
-		case "v":
+		case "variable":
 			num[numRequested] = num[value];
 			break;
 		default:
