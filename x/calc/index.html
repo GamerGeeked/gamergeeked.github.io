@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v6.2.1</title>
+		<title>xCalc v6.2.2</title>
 		<link rel='stylesheet' type='text/css' href='style.css'>
 	</head>
 	<body>
 		<div class="header"><a href="http://gamergeeked.us">home</a></div>
 		<div class="calculator">
-			<div class="title"><b>xCalc v6.2.1</b><br><span id="dyn"></div><!--
+			<div class="title"><b>xCalc v6.2.2</b><br><span id="dyn"></div><!--
 
 					OUTPUT OPTIONS
 				Operations
@@ -21,49 +21,49 @@
 			--><button class="operation largeButton" onclick="RequestInput(1, 'sqrt')">√</button><!--
 			--><button class="setter smallButton" onclick="RequestInput(3)">y</button><!--
 			--><button class="setter smallButton" onclick="RequestInput(2)">x</button><!--
-			--><button class="function smallButton" onclick="GetFunction('e ^')">e<sup>x</sup></button><!--
-			--><button class="function smallButton" onclick="GetFunction('ln')">ln</button><br><!--
+			--><button class="function smallButton" onclick="DoFunction(Math.exp)">e<sup>x</sup></button><!--
+			--><button class="function smallButton" onclick="DoFunction(Math.log)">ln</button><br><!--
 
-			--><button class="function smallButton" onclick="GetFunction('rng')">?</button><!--
-			--><button class="function smallButton" onclick="GetFunction('round')">rnd</button><!--
+			--><button class="function smallButton" onclick="DoFunction(RandomInteger)">?</button><!--
+			--><button class="function smallButton" onclick="DoFunction(Math.round)">rnd</button><!--
 			--><button class="operation longButton" onclick="RequestInput(1, 'hyp')">hypot</button><!--
 			--><button class="operation longButton" onclick="RequestInput(1, '%')">mod</button><!--
 			--><button class="operation longButton" onclick="RequestInput(1, 'base')">base</button><!--
 
-			--><button class="function smallButton" onclick="GetFunction('sign')">sign</button><!--
-			--><button class="function smallButton" onclick="GetFunction('abs')">abs</button><!--
+			--><button class="function smallButton" onclick="DoFunction(Math.sign)">sign</button><!--
+			--><button class="function smallButton" onclick="DoFunction(Math.abs)">abs</button><!--
 			--><button class="operation longButton" onclick="RequestInput(1, 'log')">log</button><!--
 			--><button class="operation longButton" onclick="RequestInput(1, 'average')">avg</button><!--
 			--><button class="operation longButton" onclick="RequestInput(1, 'dec')">dec</button><br><!--
-			--><button class="function smallButton" onclick="GetFunction('triangle')">Δ</button><!--
-			--><button class="function smallButton" onclick="GetFunction('!')">!</button><!--
+			--><button class="function smallButton" onclick="DoFunction(GetTriangle)">Δ</button><!--
+			--><button class="function smallButton" onclick="DoFunction(GetFactorial)">!</button><!--
 
 				Geometric Functions
-			--><button class="function thinButton" onclick="GetFunction('sin')">sin</button><!--
-			--><button class="function thinButton" onclick="GetFunction('asin')">asin</button><!--
-			--><button class="function thinButton" onclick="GetFunction('tan')">tan</button><!--
-			--><button class="function thinButton" onclick="GetFunction('atan')">atan</button><!--
-			--><button class="function thinButton" onclick="GetFunction('sec')">sec</button><br><!--
+			--><button class="function thinButton" onclick="DoFunction(Math.sin)">sin</button><!--
+			--><button class="function thinButton" onclick="DoFunction(Math.asin)">asin</button><!--
+			--><button class="function thinButton" onclick="DoFunction(Math.tan)">tan</button><!--
+			--><button class="function thinButton" onclick="DoFunction(Math.atan)">atan</button><!--
+			--><button class="function thinButton" onclick="DoFunction(Secant)">sec</button><br><!--
 			
-			--><button class="function thinButton" onclick="GetFunction('sinh')">sinh</button><!--
-			--><button class="function thinButton" onclick="GetFunction('asinh')">asinh</button><!--
-			--><button class="function thinButton" onclick="GetFunction('tanh')">tanh</button><!--
-			--><button class="function thinButton" onclick="GetFunction('atanh')">atanh</button><!--
-			--><button class="function thinButton" onclick="GetFunction('sech')">sech</button><br><!--
+			--><button class="function thinButton" onclick="DoFunction(Math.sinh)">sinh</button><!--
+			--><button class="function thinButton" onclick="DoFunction(Math.asinh)">asinh</button><!--
+			--><button class="function thinButton" onclick="DoFunction(Math.tanh)">tanh</button><!--
+			--><button class="function thinButton" onclick="DoFunction(Math.atanh)">atanh</button><!--
+			--><button class="function thinButton" onclick="DoFunction(HyperbolicSecant)">sech</button><br><!--
 			
-			--><button class="function thinButton" onclick="GetFunction('cos')">cos</button><!--
-			--><button class="function thinButton" onclick="GetFunction('acos')">acos</button><!--
-			--><button class="function thinButton" onclick="GetFunction('cot')">cot</button><!--
-			--><button class="function thinButton" onclick="GetFunction('acot')">acot</button><!--
-			--><button class="function thinButton" onclick="GetFunction('csc')">csc</button><!--
-			--><button class="function smallButton" onclick="GetFunction('rad')">rad</button><!--
-			--><button class="function smallButton" onclick="GetFunction('deg')">deg</button><br><!--
+			--><button class="function thinButton" onclick="DoFunction(Math.cos)">cos</button><!--
+			--><button class="function thinButton" onclick="DoFunction(Math.acos)">acos</button><!--
+			--><button class="function thinButton" onclick="DoFunction(CoTangent)">cot</button><!--
+			--><button class="function thinButton" onclick="DoFunction(ArcCoTangent)">acot</button><!--
+			--><button class="function thinButton" onclick="DoFunction(CoSecant)">csc</button><!--
+			--><button class="function smallButton" onclick="DoFunction(DegreesToRadians)">rad</button><!--
+			--><button class="function smallButton" onclick="DoFunction(RadiansToDegrees)">deg</button><br><!--
 			
-			--><button class="function thinButton" onclick="GetFunction('cosh')">cosh</button><!--
-			--><button class="function thinButton" onclick="GetFunction('acosh')">acosh</button><!--
-			--><button class="function thinButton" onclick="GetFunction('coth')">coth</button><!--
-			--><button class="function thinButton" onclick="GetFunction('acoth')">acoth</button><!--
-			--><button class="function thinButton" onclick="GetFunction('csch')">csch</button></div><!--
+			--><button class="function thinButton" onclick="DoFunction(Math.cosh)">cosh</button><!--
+			--><button class="function thinButton" onclick="DoFunction(Math.acosh)">acosh</button><!--
+			--><button class="function thinButton" onclick="DoFunction(HyperbolicCoTangent)">coth</button><!--
+			--><button class="function thinButton" onclick="DoFunction(HyperbolicArcCoTangent)">acoth</button><!--
+			--><button class="function thinButton" onclick="DoFunction(HyperbolicCoSecant)">csch</button></div><!--
 			
 					INPUT OPTIONS
 				Custom Input

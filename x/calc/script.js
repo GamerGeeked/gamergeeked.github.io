@@ -97,44 +97,13 @@ function DoAlert(q) {
 	return 1 / Math.sin(num[0]);
 } function HyperbolicCoSecant() {
 	return 1 / Math.sinh(num[0]);
-} var functions = {
-	"!": GetFactorial,
-	"triangle": GetTriangle,
-	"abs": Math.abs,
-	"sign": Math.sign,
-	"ln": Math.log,
-	"e ^": Math.exp,
-	"round": Math.round,
-	"rng": RandomInteger,
-	"sin": Math.sin,
-	"asin": Math.asin,
-	"tan": Math.tan,
-	"atan": Math.atan,
-	"sec": Secant,
-	"rad": DegreesToRadians,
-	"hyp": Math.hypot,
-	"sinh": Math.sinh,
-	"asinh": Math.asinh,
-	"tanh": Math.tanh,
-	"atanh": Math.atanh,
-	"sech": HyperbolicSecant,
-	"cosh": Math.cos,
-	"acosh": Math.acos,
-	"cot": CoTangent,
-	"acot": ArcCoTangent,
-	"csc": CoSecant,
-	"deg": RadiansToDegrees,
-	"cosh": Math.cosh,
-	"acosh": Math.acosh,
-	"coth": HyperbolicCoTangent,
-	"acoth": HyperbolicArcCoTangent,
-	"csch": HyperbolicCoSecant,
 }
-function GetFunction(op) {
+function DoFunction(op) {
 	if(num[0] == null) {
+		DoAlert("Error: Null Function");
 		return
 	}
-	result = functions[op](num[0]);
+	result = op(num[0]);
 	DoAlert(result)
 	num[0] = result;
 }
