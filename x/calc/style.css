@@ -64,6 +64,13 @@
 	margin: 5px;
 } .thinButton:hover {
 	border-width: 0px;
+} .narrowButton {
+	font-size: 12px;
+	height: 45px;
+	width: 17.5px;
+	margin: 5px;
+} .narrowButton:hover {
+	border-width: 0px;
 }  .longButton {
 	font-size: 16px;
 	height: 45px;
@@ -117,7 +124,7 @@
 	bottom: 0;
 	left: 0;
 	width: 440px;
-	height: 600px;
+	height: 485px;
 	border-radius: 3px;
 } input {
 	background-color: white;

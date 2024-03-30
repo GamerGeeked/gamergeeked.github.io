@@ -1,144 +1,167 @@
-var num = [0,0,0,0];
-var result;
-var originalBase;
-var tempNum;
-var dyn = document.getElementById("dyn");
-var numRequested;
-var opRequested;
+//Values
+var a_input = 0;
+var ans = 0;
+var Num = {
+	a: 0,
+	b: 0,
+	x: 0,
+	y: 0,
+	set: function(key = 'a', value = ans) {
+		value = math.complex(value);
+		if (math.re(math.im(value)) == 0) {
+			this[key] = math.re(value);
+		} else {
+			this[key] = value;
+		}
+		if (key == 'a' && Request.op == undefined) {
+			a_input = this[key];
+		}
+		Debug.msg(Num);
+	}
+}
 
+//System Functions
 var field = document.getElementById("field");
-var inputOptions = document.getElementById("inputOptions");
-var outputOptions = document.getElementById("outputOptions");
+var Dyn = {
+	element: document.getElementById("dyn"),
+	alert: function(q) {
+		this.element.innerHTML = q;
+	}
+}
+var Mode = {
+	inputOptions: document.getElementById("inputOptions"),
+	outputOptions: document.getElementById("outputOptions"),
+	set: function(newMode) {
+		inputOptions.style.display = "none";
+		outputOptions.style.display = "none";
+		newMode.style.display = "block";
+	}
+}
+var Debug = {
+	state: false,
+	msg: function(q) {
+		if (this.state == true) {
+			console.log(q);
+		}
+	}
+}
 
-function DoAlert(q) {
-	dyn.innerHTML = q;
-} function DoPrompt(q) {
-	DoAlert(q);
-	return field.value;
-} function GetOperation(op) {
-	switch (op) {
-		case "+":
-			result = Number(num[0]) + Number(num[1]);
-			break;
-		case "-":
-			result = Number(num[0]) - Number(num[1]);
-			break;
-		case "*":
-			result = Number(num[0]) * Number(num[1]);
-			break;
-		case "/":
-			result = Number(num[0]) / Number(num[1]);
-			break;
-		case "%":
-			result = Number(num[0]) % Number(num[1]);
-			break;
-		case "^":
-			result = Number(num[0]) ** Number(num[1]);
-			break;
-		case "sqrt":
-			result = Number(num[0]) ** (1 / (Number(num[1])));
-			break;
-		case "log":
-			result = Math.log(num[0]) / Math.log(num[1]);
-			break;
-		case "%":
-			result = Number(num[0])%Number(num[1]);
-			break;
-		case "hyp":
-			result = Math.hypot(num[0], num[1]);
-			break;
-		case "average":
-			result = (Number(num[0]) + Number(num[1]))/2;
-			break;
-		case "base":
-			result = Number(num[0]).toString(num[1]);
-			break;
-		case "dec":
-			result = parseInt(num[0], num[1]);
-			break;
-		default:
-			DoAlert("Error: Unknown Operation");
-			return;
+//Function/Operation Library
+function Factorial() {
+	return math.gamma(math.add(Num['a'],1));
+} function Triangle() {
+	if(math.larger(Num['a'], 359026206)) {
+			throw new Error("Input too large")
 	}
-	DoAlert(result);
-	num[0] = result;
-} function GetFactorial() {
-	tempNum = Number(num[0]);
-	for(i = tempNum - 1; i >= 1; i--) {
-		tempNum = tempNum * i;
+	var num = Number(Num['a']);
+	for(i = num - 1; i >= 1; i--) {
+		num = math.add(num, i);
 	}
-	DoAlert(num[0] + "! = " + tempNum);
-	return tempNum
-} function GetTriangle() {
-	tempNum = Number(num[0]);
-	for(i = tempNum - 1; i >= 1; i--) {
-		tempNum = tempNum + i;
-	}
-	return tempNum
-} function DegreesToRadians() {
-	return num[0] * (Math.PI / 180);
-} function RadiansToDegrees() {
-	return num[0] / (Math.PI / 180);
+	return num;
+} function Deg2Rad() {
+	return Num['a'] * (Math.PI / 180);
+} function Rad2Deg() {
+	return Num['a'] / (Math.PI / 180);
 } function RandomInteger() {
-	return Math.round(Math.random() * num[0]);
-} function CoTangent() {
-	return 1 / Math.tan(num[0]);
-} function HyperbolicCoTangent() {
-	return 1 / Math.tanh(num[0]);
-} function ArcCoTangent() {
-	return Math.PI / 2 - Math.atan(num[0]);
-} function HyperbolicArcCoTangent() {
-	return (Math.log((1/num[0])+1) - Math.log(1-(1/num[0]))) / 2
-} function Secant() {
-	return 1 / Math.cos(num[0]);
-} function HyperbolicSecant() {
-	return 1 / Math.cosh(num[0]);
-} function CoSecant() {
-	return 1 / Math.sin(num[0]);
-} function HyperbolicCoSecant() {
-	return 1 / Math.sinh(num[0]);
-}
-function DoFunction(op) {
-	if(num[0] == null) {
-		DoAlert("Error: Null Function");
-		return
+	return math.randomInt(0, Number(Num['a']));
+} function Base(a, b) {
+	switch (b) {
+		case 2:
+			return math.bin(a, b);
+		case 8:
+			return math.oct(a, b);
+		case 16:
+			return math.hex(a, b);
 	}
-	result = op(num[0]);
-	DoAlert(result)
-	num[0] = result;
+	return math.re(a).toString(b) + " + " + math.im(a).toString(b) + "i";
+} function Dec(a, b) {
+	return parseInt(math.re(a), b) + " + " + parseInt(math.im(a), b) + "i";
 }
-function RequestInput(numID, op) {
-	inputOptions.style.display = "block";
-	outputOptions.style.display = "none";
-	field.select();
-	numRequested = numID;
-	opRequested = op;
-	DoAlert("Please input a value for Number " + (numRequested + 1));
+
+/* WIP: Switching between degree mode and radian mode
+and being able to use all trig functions properly
+
+var Angle = {
+	unit: 'rad',
+	Mode: function(newMode) {
+		Dyn.alert("[deg] and [rad] are currently disabled.");
+		this.unit = newMode;
+		Debug.msg(this);
+	},
+	fn: function(op) {
+		try {
+			ans = op(math.unit(Num['a'], this.unit));
+			Dyn.alert(ans);
+			console.log(op.name + "(" + Num['a'] + ") = " + ans)
+			Num.set();
+		} catch (error) {
+			Dyn.alert(error);
+			console.log(error);
+		}
+	},
+	afn: function(op) {
+		try {
+			ans = op(math.unit(Num['a'], this.unit));
+			Dyn.alert(ans);
+			console.log(op.name + "(" + Num['a'] + ") = " + ans)
+			Num.set();
+		} catch (error) {
+			Dyn.alert(error);
+			console.log(error);
+		}
+	}
 }
-function DoInput(type, value) {
-	if(num[0] == null) {
-		return
+*/
+
+//Function Handler
+function Fn(op, num = Num['a']) {
+	try {
+		ans = op(Num['a']);
+		Dyn.alert(ans);
+		console.log(op.name + "(" + Num['a'] + ") = " + ans)
+		Num.set();
+	} catch (error) {
+		Dyn.alert(error);
+		console.log(error);
 	}
-	switch (type) {
-		case "constant":
-			num[numRequested] = value;
-			break;
-		case "field":
-			num[numRequested] = field.value;
-			break;
-		case "variable":
-			num[numRequested] = num[value];
-			break;
-		default:
-			DoAlert("Error: Unknown Input Type");
-			return;
-	}
-	if (opRequested != null) {
-		GetOperation(opRequested);
-	} else {
-		DoAlert("Number " + (numRequested + 1) + " set to " + num[0]);
-	}
-	inputOptions.style.display = "none";
-	outputOptions.style.display = "block";
 }
-RequestInput(0);
+
+//Input System
+var Request = {
+	num: undefined,
+	op: undefined,
+	send: function(num, op) {
+		this.num = num;
+		this.op = op;
+		Debug.msg(Request);
+		Dyn.alert("Please input a value for " + Request.num);
+		Mode.set(Mode.inputOptions);
+		field.value = Num[num];
+		field.select();
+	}
+}
+function Input(value = field.value) {
+	if (value == "debug") {
+		debug = true;
+		Dyn.alert("Debug Mode enabled.");
+		return;
+	}
+	try {
+		Num.set(Request.num, value);
+		if (Request.op != undefined) {
+			ans = math.complex(Request.op(Num['a'], Num['b']));
+			console.log(Request.op.name + "(" + Num['a'] + ", " + Num['b'] + ") = " + ans)
+			Dyn.alert(ans);
+			Num.set();
+		} else {
+			Dyn.alert(Request.num + " set to " + Num[Request.num]);
+		}
+	} catch (error) {
+		Dyn.alert(error);
+		console.log(error);
+	}
+	Mode.set(Mode.outputOptions);
+}
+
+//Startup
+Request.send('a');

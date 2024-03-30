@@ -1,85 +1,103 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v6.2.3</title>
+		<title>xCalc v7.0.0</title>
 		<link rel='stylesheet' type='text/css' href='style.css'>
+		<script type="text/javascript" src="math.js"></script>
 	</head>
 	<body>
+		<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
 		<div class="header"><a href="http://gamergeeked.us">home</a></div>
-		<div class="calculator">
-			<div class="title"><b>xCalc v6.2.3</b><br><span id="dyn"></div><!--
+		<div class="calculator" id="calculator">
+			<div class="title"><b>xCalc v7.0.0</b><br><span id="dyn"></div><!--
 
 					OUTPUT OPTIONS
 				Operations
-			--><div id = "outputOptions"><button class="operation largeButton" style="font-size:48px;" onclick="RequestInput(1, '+')">+</button><!--
-			--><button class="operation largeButton" style="font-size:48px;" onclick="RequestInput(1, '-')">−</button><!--
-			--><button class="operation largeButton" onclick="RequestInput(1, '^')">↑</button><!--
-			--><button class="setter largeButton" onclick="RequestInput(0)">C</button><br><!--
+			--><div id="outputOptions"><button class="operation largeButton" style="font-size:48px;" onclick="Request.send('b', math.add)">+</button><!--
+			--><button class="operation largeButton" style="font-size:48px;" onclick="Request.send('b',  math.subtract)">−</button><!--
+			--><button class="operation largeButton" onclick="Request.send('b', math.pow)">a<sup>b</sup></button><!--
+			--><button class="setter largeButton" onclick="Request.send('a')">C</button><br><!--
 			
-			--><button class="operation largeButton" style="font-size:48px;" onclick="RequestInput(1, '*')">×</button><!--
-			--><button class="operation largeButton" style="font-size:48px;" onclick="RequestInput(1, '/')">÷</button><!--
-			--><button class="operation largeButton" onclick="RequestInput(1, 'sqrt')">√</button><!--
-			--><button class="setter smallButton" onclick="RequestInput(3)">y</button><!--
-			--><button class="setter smallButton" onclick="RequestInput(2)">x</button><!--
-			--><button class="function smallButton" onclick="DoFunction(Math.exp)">e<sup>x</sup></button><!--
-			--><button class="function smallButton" onclick="DoFunction(Math.log)">ln</button><br><!--
+			--><button class="operation largeButton" style="font-size:48px;" onclick="Request.send('b', math.multiply)">×</button><!--
+			--><button class="operation largeButton" style="font-size:48px;" onclick="Request.send('b', math.divide)">÷</button><!--
+			--><button class="operation largeButton" onclick="Request.send('b', math.nthRoot)">√</button><!--
+			--><button class="setter smallButton" onclick="Request.send('y')">y</button><!--
+			--><button class="setter smallButton" onclick="Request.send('x')">x</button><!--
+			--><button class="function smallButton" onclick="Fn(math.exp)">e<sup>a</sup></button><!--
+			--><button class="function smallButton" onclick="Fn(math.log)">ln</button><br><!--
 
-			--><button class="function smallButton" onclick="DoFunction(RandomInteger)">?</button><!--
-			--><button class="function smallButton" onclick="DoFunction(Math.round)">rnd</button><!--
-			--><button class="operation longButton" onclick="RequestInput(1, 'hyp')">hypot</button><!--
-			--><button class="operation longButton" onclick="RequestInput(1, '%')">mod</button><!--
-			--><button class="operation longButton" onclick="RequestInput(1, 'base')">base</button><!--
+			--><button class="function smallButton" onclick="Fn(math.sqrt)">sqrt</button><!--
+			--><button class="function smallButton" onclick="Fn(math.round)">rnd</button><!--
+			--><button class="operation smallButton" onclick="Request.send('b', math.bitXor)">xor</button><!--
+			--><button class="operation smallButton" onclick="Request.send('b', math.bitOr)">or</button><!--
+			--><button class="operation smallButton" onclick="Request.send('b', math.bitAnd)">and</button><!--
+			--><button class="operation smallButton" onclick="Request.send('b', math.hypot)">hypot</button><!--
+			--><button class="operation smallButton" onclick="Request.send('b', math.mod)">mod</button><!--
+			--><button class="operation smallButton" onclick="Request.send('b', Base)">base</button><!--
 
-			--><button class="function smallButton" onclick="DoFunction(Math.sign)">sign</button><!--
-			--><button class="function smallButton" onclick="DoFunction(Math.abs)">abs</button><!--
-			--><button class="operation longButton" onclick="RequestInput(1, 'log')">log</button><!--
-			--><button class="operation longButton" onclick="RequestInput(1, 'average')">avg</button><!--
-			--><button class="operation longButton" onclick="RequestInput(1, 'dec')">dec</button><br><!--
-			--><button class="function smallButton" onclick="DoFunction(GetTriangle)">Δ</button><!--
-			--><button class="function smallButton" onclick="DoFunction(GetFactorial)">!</button><!--
+			--><button class="function smallButton" onclick="Fn(math.sign)">sign</button><!--
+			--><button class="function smallButton" onclick="Fn(math.abs)">abs</button><!--
+			--><button class="operation smallButton" onclick="Request.send('b', math.randomInt)">?</button><!--
+			--><button class="operation smallButton" onclick="Request.send('b', math.lcm)">lcm</button><!--
+			--><button class="operation smallButton" onclick="Request.send('b', math.gcd)">gcd</button><!--
+			--><button class="operation smallButton" onclick="Request.send('b', math.log)">log<sub>b</sub></button><!--
+			--><button class="operation smallButton" onclick="Request.send('b', math.mean)">avg</button><!--
+			--><button class="operation smallButton" onclick="Request.send('b', Dec)">dec</button><br><!--
+			--><button class="function smallButton" onclick="Fn(Triangle)">Δ</button><!--
+			--><button class="function smallButton" onclick="Fn(Factorial)">!</button><!--
 
-				Geometric Functions
-			--><button class="function thinButton" onclick="DoFunction(Math.sin)">sin</button><!--
-			--><button class="function thinButton" onclick="DoFunction(Math.asin)">asin</button><!--
-			--><button class="function thinButton" onclick="DoFunction(Math.tan)">tan</button><!--
-			--><button class="function thinButton" onclick="DoFunction(Math.atan)">atan</button><!--
-			--><button class="function thinButton" onclick="DoFunction(Secant)">sec</button><br><!--
+				Trigonometric Functions
+			--><button class="function thinButton" onclick="Fn(math.sin)">sin</button><!--
+			--><button class="function thinButton" onclick="Fn(math.asin)">asin</button><!--
+			--><button class="function thinButton" onclick="Fn(math.tan)">tan</button><!--
+			--><button class="function thinButton" onclick="Fn(math.atan)">atan</button><!--
+			--><button class="function thinButton" onclick="Fn(math.sec)">sec</button><!--
+			--><button class="function thinButton" onclick="Fn(math.asec)">asec</button><br><!--
 			
-			--><button class="function thinButton" onclick="DoFunction(Math.sinh)">sinh</button><!--
-			--><button class="function thinButton" onclick="DoFunction(Math.asinh)">asinh</button><!--
-			--><button class="function thinButton" onclick="DoFunction(Math.tanh)">tanh</button><!--
-			--><button class="function thinButton" onclick="DoFunction(Math.atanh)">atanh</button><!--
-			--><button class="function thinButton" onclick="DoFunction(HyperbolicSecant)">sech</button><br><!--
+			--><button class="function thinButton" onclick="Fn(math.sinh)">sinh</button><!--
+			--><button class="function thinButton" onclick="Fn(math.asinh)">asinh</button><!--
+			--><button class="function thinButton" onclick="Fn(math.tanh)">tanh</button><!--
+			--><button class="function thinButton" onclick="Fn(math.atanh)">atanh</button><!--
+			--><button class="function thinButton" onclick="Fn(math.sech)">sech</button><!--
+			--><button class="function thinButton" onclick="Fn(math.asech)">asech</button><br><!--
 			
-			--><button class="function thinButton" onclick="DoFunction(Math.cos)">cos</button><!--
-			--><button class="function thinButton" onclick="DoFunction(Math.acos)">acos</button><!--
-			--><button class="function thinButton" onclick="DoFunction(CoTangent)">cot</button><!--
-			--><button class="function thinButton" onclick="DoFunction(ArcCoTangent)">acot</button><!--
-			--><button class="function thinButton" onclick="DoFunction(CoSecant)">csc</button><!--
-			--><button class="function smallButton" onclick="DoFunction(DegreesToRadians)">rad</button><!--
-			--><button class="function smallButton" onclick="DoFunction(RadiansToDegrees)">deg</button><br><!--
+			--><button class="function thinButton" onclick="Fn(math.cos)">cos</button><!--
+			--><button class="function thinButton" onclick="Fn(math.acos)">acos</button><!--
+			--><button class="function thinButton" onclick="Fn(math.cot)">cot</button><!--
+			--><button class="function thinButton" onclick="Fn(math.acot)">acot</button><!--
+			--><button class="function thinButton" onclick="Fn(math.csc)">csc</button><!--
+			--><button class="function thinButton" onclick="Fn(math.acsc)">acsc</button><!--
+			--><button class="function smallButton" onclick="Fn(Deg2Rad)">rad</button><!--
+			--><button class="function smallButton" onclick="Fn(Rad2Deg)">deg</button><br><!--
 			
-			--><button class="function thinButton" onclick="DoFunction(Math.cosh)">cosh</button><!--
-			--><button class="function thinButton" onclick="DoFunction(Math.acosh)">acosh</button><!--
-			--><button class="function thinButton" onclick="DoFunction(HyperbolicCoTangent)">coth</button><!--
-			--><button class="function thinButton" onclick="DoFunction(HyperbolicArcCoTangent)">acoth</button><!--
-			--><button class="function thinButton" onclick="DoFunction(HyperbolicCoSecant)">csch</button></div><!--
+			--><button class="function thinButton" onclick="Fn(math.cosh)">cosh</button><!--
+			--><button class="function thinButton" onclick="Fn(math.acosh)">acosh</button><!--
+			--><button class="function thinButton" onclick="Fn(math.coth)">coth</button><!--
+			--><button class="function thinButton" onclick="Fn(math.acoth)">acoth</button><!--
+			--><button class="function thinButton" onclick="Fn(math.csch)">csch</button><!--
+			--><button class="function thinButton" onclick="Fn(math.acsch)">acsch</button></div><!--
 			
 					INPUT OPTIONS
 				Custom Input
-			--><div id = "inputOptions"><input type="number" id="field"></input><!--
-			--><button class="inputButton" onclick="DoInput('field')" id="confirmButton">Confirm</button><br><!--
+			--><div id = "inputOptions"><form target="dummyframe"><input type="text" id="field"></input><!--
+			--><button class="inputButton" type="submit" onclick="Input()" id="confirmButton">Confirm</button></form><br><!--
 			
 				Constants
-			--><button class="constant largeButton" onclick="DoInput('variable', 2)" id="constant1">y</button><!--
-			--><button class="constant largeButton" onclick="DoInput('variable', 2)" id="constant2">x</button><!--
-			--><button class="constant largeButton" onclick="DoInput('constant', Math.PI)" id="constant3">π</button><!--
-			--><button class="constant largeButton" onclick="DoInput('constant', 1.61803398874989484820)" id="constant4">φ</button><br><!--
+			--><button class="constant tallButton" onclick="Input(Num['b'])">b</button><!--
+			--><button class="constant tallButton" onclick="Input(a_input)">a</button><!--
+			--><button class="constant largeButton" onclick="Input(ans)">ans</button><!--
+			--><button class="constant largeButton" onclick="Input(Num['y'])">y</button><!--
+			--><button class="constant largeButton" onclick="Input(Num['x'])">x</button><br><!--
 			
-			--><button class="constant largeButton" onclick="DoInput('constant', Math.SQRT2)" id="constant5">√2</button><!--
-			--><button class="constant largeButton" onclick="DoInput('constant', Math.LN2)" id="constant6">ln 2</button><!--
-			--><button class="constant largeButton" onclick="DoInput('constant', Math.E)" id="constant7">e</button><!--
-			--><button class="constant largeButton" onclick="DoInput('constant', result)" id="constant8">ans</button></div>
+			--><button class="constant largeButton" onclick="Input(math.PI)">π</button><!--
+			--><button class="constant largeButton" onclick="Input(math.tau)">τ</button><!--
+			--><button class="constant largeButton" onclick="Input(math.E)">e</button><!--
+			--><button class="constant largeButton" onclick="Input(math.phi)">φ</button><br><!--
+			
+			--><button class="constant largeButton" onclick="Input(math.SQRT2)">√2</button><!--
+			--><button class="constant largeButton" onclick="Input(math.LN2)">ln 2</button><!--
+			--><button class="constant largeButton" onclick="Input(math.LN1_2)">ln ½</button><!--
+			--><button class="constant largeButton" onclick="Input(math.LOG10E)">log e</button></div>
 		</div>
 	</body>
 </html>
