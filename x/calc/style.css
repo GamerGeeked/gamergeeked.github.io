@@ -10,7 +10,7 @@
 	background-color: white;
 	color: #005f3b;
 	border: solid;
-	border-width: 5px;
+	border-width: 0px;
 } .function {
 	background-color: #5f003b;
 	border: none;
@@ -21,7 +21,7 @@
 	background-color: white;
 	color: #5f003b;
 	border: solid;
-	border-width: 5px;
+	border-width: 0px;
 } .constant {
 	background-color: #003b5f;
 	border: none;
@@ -33,7 +33,7 @@
 	background-color: white;
 	color: #003b5f;
 	border: solid;
-	border-width: 5px;
+	border-width: 0px;
 } .setter {
 	background-color: black;
 	border: none;
@@ -45,7 +45,7 @@
 	background-color: white;
 	color: black;
 	border: solid;
-	border-width: 5px;
+	border-width: 0px;
 } .largeButton {
 	font-size: 32px;
 	height: 100px;
@@ -155,5 +155,5 @@
 	background-color: #ffffff;
 	color: black;
 	border:  2px solid #003b5f;
-	border-width: 5px;
+	border-width: 0px;
 }
