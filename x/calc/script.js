@@ -50,18 +50,11 @@ var Debug = {
 function Factorial() {
 	return math.gamma(math.add(Num['a'],1));
 } function Triangle() {
-	if(math.larger(Num['a'], 359026206)) {
-			throw new Error("Input too large")
-	}
-	var num = Number(Num['a']);
-	for(i = num - 1; i >= 1; i--) {
-		num = math.add(num, i);
-	}
-	return num;
+	return math.divide(math.add(math.square(Num['a']),Num['a']), 2)
 } function Deg2Rad() {
-	return Num['a'] * (Math.PI / 180);
+	return math.multiply(Num['a'], math.divide(Math.PI, 180));
 } function Rad2Deg() {
-	return Num['a'] / (Math.PI / 180);
+	return math.multiply(Num['a'], math.divide(180, Math.PI));
 } function RandomInteger() {
 	return math.randomInt(0, Number(Num['a']));
 } function Base(a, b) {
