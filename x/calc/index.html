@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>xCalc v7.0.4</title>
+		<title>xCalc v7.1.0</title>
 		<link rel='stylesheet' type='text/css' href='style.css'>
 		<script type="text/javascript" src="math.js"></script>
 	</head>
@@ -9,7 +9,7 @@
 		<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
 		<div class="header"><a href="http://gamergeeked.us">home</a></div>
 		<div class="calculator" id="calculator">
-			<div class="title"><b>xCalc v7.0.4</b><br><span id="dyn"></div><!--
+			<div class="title"><b>xCalc v7.1.0</b><br><span id="dyn"></div><!--
 
 					OUTPUT OPTIONS
 				Operations
@@ -47,35 +47,34 @@
 			--><button class="function smallButton" onclick="Fn(Factorial)">!</button><!--
 
 				Trigonometric Functions
-			--><button class="function thinButton" onclick="Fn(math.sin)">sin</button><!--
-			--><button class="function thinButton" onclick="Fn(math.asin)">asin</button><!--
-			--><button class="function thinButton" onclick="Fn(math.tan)">tan</button><!--
-			--><button class="function thinButton" onclick="Fn(math.atan)">atan</button><!--
-			--><button class="function thinButton" onclick="Fn(math.sec)">sec</button><!--
-			--><button class="function thinButton" onclick="Fn(math.asec)">asec</button><br><!--
+			--><button class="function thinButton" onclick="Angle.fn(math.sin)">sin</button><!--
+			--><button class="function thinButton" onclick="Angle.afn(math.asin)">asin</button><!--
+			--><button class="function thinButton" onclick="Angle.fn(math.tan)">tan</button><!--
+			--><button class="function thinButton" onclick="Angle.afn(math.atan)">atan</button><!--
+			--><button class="function thinButton" onclick="Angle.fn(math.sec)">sec</button><!--
+			--><button class="function thinButton" onclick="Angle.afn(math.asec)">asec</button><br><!--
 			
-			--><button class="function thinButton" onclick="Fn(math.sinh)">sinh</button><!--
-			--><button class="function thinButton" onclick="Fn(math.asinh)">asinh</button><!--
-			--><button class="function thinButton" onclick="Fn(math.tanh)">tanh</button><!--
-			--><button class="function thinButton" onclick="Fn(math.atanh)">atanh</button><!--
-			--><button class="function thinButton" onclick="Fn(math.sech)">sech</button><!--
-			--><button class="function thinButton" onclick="Fn(math.asech)">asech</button><br><!--
+			--><button class="function thinButton" onclick="Angle.fn(math.sinh)">sinh</button><!--
+			--><button class="function thinButton" onclick="Angle.afn(math.asinh)">asinh</button><!--
+			--><button class="function thinButton" onclick="Angle.fn(math.tanh)">tanh</button><!--
+			--><button class="function thinButton" onclick="Angle.afn(math.atanh)">atanh</button><!--
+			--><button class="function thinButton" onclick="Angle.fn(math.sech)">sech</button><!--
+			--><button class="function thinButton" onclick="Angle.afn(math.asech)">asech</button><br><!--
 			
-			--><button class="function thinButton" onclick="Fn(math.cos)">cos</button><!--
-			--><button class="function thinButton" onclick="Fn(math.acos)">acos</button><!--
-			--><button class="function thinButton" onclick="Fn(math.cot)">cot</button><!--
-			--><button class="function thinButton" onclick="Fn(math.acot)">acot</button><!--
-			--><button class="function thinButton" onclick="Fn(math.csc)">csc</button><!--
-			--><button class="function thinButton" onclick="Fn(math.acsc)">acsc</button><!--
-			--><button class="function smallButton" onclick="Fn(Deg2Rad)">rad</button><!--
-			--><button class="function smallButton" onclick="Fn(Rad2Deg)">deg</button><br><!--
+			--><button class="function thinButton" onclick="Angle.fn(math.cos)">cos</button><!--
+			--><button class="function thinButton" onclick="Angle.afn(math.acos)">acos</button><!--
+			--><button class="function thinButton" onclick="Angle.fn(math.cot)">cot</button><!--
+			--><button class="function thinButton" onclick="Angle.afn(math.acot)">acot</button><!--
+			--><button class="function thinButton" onclick="Angle.fn(math.csc)">csc</button><!--
+			--><button class="function thinButton" onclick="Angle.afn(math.acsc)">acsc</button><!--
+			--><button class="function longButton" onclick="Angle.mode()" id="angleModeToggle">rad</button><br><!--
 			
-			--><button class="function thinButton" onclick="Fn(math.cosh)">cosh</button><!--
-			--><button class="function thinButton" onclick="Fn(math.acosh)">acosh</button><!--
-			--><button class="function thinButton" onclick="Fn(math.coth)">coth</button><!--
-			--><button class="function thinButton" onclick="Fn(math.acoth)">acoth</button><!--
-			--><button class="function thinButton" onclick="Fn(math.csch)">csch</button><!--
-			--><button class="function thinButton" onclick="Fn(math.acsch)">acsch</button></div><!--
+			--><button class="function thinButton" onclick="Angle.fn(math.cosh)">cosh</button><!--
+			--><button class="function thinButton" onclick="Angle.fn(math.acosh)">acosh</button><!--
+			--><button class="function thinButton" onclick="Angle.fn(math.coth)">coth</button><!--
+			--><button class="function thinButton" onclick="Angle.fn(math.acoth)">acoth</button><!--
+			--><button class="function thinButton" onclick="Angle.fn(math.csch)">csch</button><!--
+			--><button class="function thinButton" onclick="Angle.fn(math.acsch)">acsch</button></div><!--
 			
 					INPUT OPTIONS
 				Custom Input

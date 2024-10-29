@@ -47,16 +47,16 @@ var Debug = {
 }
 
 //Function/Operation Library
-function Factorial() {
-	return math.gamma(math.add(Num['a'],1));
-} function Triangle() {
-	return math.divide(math.add(math.square(Num['a']),Num['a']), 2)
-} function Deg2Rad() {
-	return math.multiply(Num['a'], math.divide(Math.PI, 180));
-} function Rad2Deg() {
-	return math.multiply(Num['a'], math.divide(180, Math.PI));
-} function RandomInteger() {
-	return math.randomInt(0, Number(Num['a']));
+function Factorial(num = Num['a']) {
+	return math.gamma(math.add(num,1));
+} function Triangle(num = Num['a']) {
+	return math.divide(math.add(math.square(num),num), 2)
+} function Deg2Rad(num = Num['a']) {
+	return math.multiply(num, math.divide(Math.PI, 180));
+} function Rad2Deg(num = Num['a']) {
+	return math.multiply(num, math.divide(180, Math.PI));
+} function RandomInteger(num = Num['a']) {
+	return math.randomInt(0, Number(num));
 } function Base(a, b) {
 	switch (b) {
 		case 2:
@@ -71,52 +71,54 @@ function Factorial() {
 	return parseInt(math.re(a), b) + " + " + parseInt(math.im(a), b) + "i";
 }
 
-/* WIP: Switching between degree mode and radian mode
-and being able to use all trig functions properly
-
 var Angle = {
+	button: document.getElementById("angleModeToggle"),
 	unit: 'rad',
-	Mode: function(newMode) {
-		Dyn.alert("[deg] and [rad] are currently disabled.");
-		this.unit = newMode;
+	flag: false,
+	mode: function() {
+		if(this.unit == 'rad') {
+			this.unit = 'deg'
+			if (this.flag) {
+				Fn(Rad2Deg)
+			}
+		} else {
+			this.unit = 'rad'
+			if (this.flag) {
+				Fn(Deg2Rad)
+			}
+		}
+		this.button.innerHTML = this.unit
 		Debug.msg(this);
 	},
-	fn: function(op) {
-		try {
-			ans = op(math.unit(Num['a'], this.unit));
-			Dyn.alert(ans);
-			console.log(op.name + "(" + Num['a'] + ") = " + ans)
-			Num.set();
-		} catch (error) {
-			Dyn.alert(error);
-			console.log(error);
-		}
+	fn: function(op, num = Num['a']) {
+		Fn(op, math.unit(Num['a'], this.unit))
 	},
-	afn: function(op) {
-		try {
-			ans = op(math.unit(Num['a'], this.unit));
-			Dyn.alert(ans);
-			console.log(op.name + "(" + Num['a'] + ") = " + ans)
-			Num.set();
-		} catch (error) {
-			Dyn.alert(error);
-			console.log(error);
+	afn: function(op, num = Num['a']) {
+		if (this.unit == 'deg') {
+			Fn(op, num, Rad2Deg)
+		} else {
+			Fn(op)
 		}
+		this.flag = true;
 	}
 }
-*/
+
 
 //Function Handler
-function Fn(op, num = Num['a']) {
+function Fn(op, num = Num['a'], op2) {
 	try {
-		ans = op(Num['a']);
+		ans = op(num);
+		if (op2 != null) {
+			ans = op2(ans)
+		}
 		Dyn.alert(ans);
-		console.log(op.name + "(" + Num['a'] + ") = " + ans)
+		console.log(op.name + "(" + num + ") = " + ans)
 		Num.set();
 	} catch (error) {
 		Dyn.alert(error);
 		console.log(error);
 	}
+	Angle.flag = false;
 }
 
 //Input System
