@@ -134,8 +134,12 @@ var Request = {
 }
 function Input(value = field.value) {
 	if (value == "debug") {
-		debug = true;
-		Dyn.alert("Debug Mode enabled.");
+		Debug.state = !Debug.state;
+		if (Debug.state) {
+			Dyn.alert("Debug Mode enabled.");
+		} else {
+			Dyn.alert("Debug Mode disabled.");
+		}
 		return;
 	}
 	try {
