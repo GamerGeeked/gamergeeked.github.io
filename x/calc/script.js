@@ -58,14 +58,6 @@ function Factorial(num = Num['a']) {
 } function RandomInteger(num = Num['a']) {
 	return math.randomInt(0, Number(num));
 } function Base(a, b) {
-	switch (b) {
-		case 2:
-			return math.bin(a, b);
-		case 8:
-			return math.oct(a, b);
-		case 16:
-			return math.hex(a, b);
-	}
 	return math.re(a).toString(b) + " + " + math.im(a).toString(b) + "i";
 } function Dec(a, b) {
 	return parseInt(math.re(a), b) + " + " + parseInt(math.im(a), b) + "i";
