@@ -74,16 +74,15 @@ function Factorial(num = Num['a']) {
 var Angle = {
 	button: document.getElementById("angleModeToggle"),
 	unit: 'rad',
-	flag: false,
-	mode: function() {
+	mode: function(event) {
 		if(this.unit == 'rad') {
 			this.unit = 'deg'
-			if (this.flag) {
+			if (event.shiftKey) {
 				Fn(Rad2Deg)
 			}
 		} else {
 			this.unit = 'rad'
-			if (this.flag) {
+			if (event.shiftKey) {
 				Fn(Deg2Rad)
 			}
 		}
@@ -99,7 +98,6 @@ var Angle = {
 		} else {
 			Fn(op)
 		}
-		this.flag = true;
 	}
 }
 
@@ -118,7 +116,6 @@ function Fn(op, num = Num['a'], op2) {
 		Dyn.alert(error);
 		console.log(error);
 	}
-	Angle.flag = false;
 }
 
 //Input System
