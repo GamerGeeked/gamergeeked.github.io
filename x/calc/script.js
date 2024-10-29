@@ -140,7 +140,7 @@ function Input(value = field.value) {
 	}
 	try {
 		Num.set(Request.num, value);
-		if (Request.op != undefined) {
+		if (Request.op) {
 			ans = math.complex(Request.op(Num['a'], Num['b']));
 			console.log(Request.op.name + "(" + Num['a'] + ", " + Num['b'] + ") = " + ans)
 			Dyn.alert(ans);
