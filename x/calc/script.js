@@ -1,3 +1,14 @@
+const digitSet = [
+	'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+	'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+	'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+	'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D',
+	'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+	'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
+	'Y', 'Z', '!', '@', '#', '$', '%', '^', '&', '*',
+	':', ';'
+]
+
 //Values
 var a_input = 0;
 var ans = 0;
@@ -46,6 +57,7 @@ var Debug = {
 	}
 }
 
+
 //Function/Operation Library
 function Factorial(num = Num['a']) {
 	return math.gamma(math.add(num,1));
@@ -57,20 +69,60 @@ function Factorial(num = Num['a']) {
 	return math.multiply(num, math.divide(180, Math.PI));
 } function RandomInteger(num = Num['a']) {
 	return math.randomInt(0, Number(num));
-} function Base(a, b) {
-	switch (b) {
-		case 2:
-			return math.bin(a, b);
-		case 8:
-			return math.oct(a, b);
-		case 16:
-			return math.hex(a, b);
+} function Base(num = Num['a'], base = Num['b']) {
+	return BaseComp(math.re(num)) + " + " + BaseComp(math.im(num)) + "i";
+} function BaseComp(num = Num['a'], base = Num['b']) {
+	if (num == 0) {
+		return num
 	}
-	return math.re(a).toString(b) + " + " + math.im(a).toString(b) + "i";
-} function Dec(a, b) {
-	return parseInt(math.re(a), b) + " + " + parseInt(math.im(a), b) + "i";
+	temp = num;
+	diff = num;
+	res = "";
+	magnitude = math.floor(math.log(num, base));
+	total = 0;
+	while (diff != 0) {
+		if (magnitude == -1) {
+			res = res + ".";
+		}
+		factor = math.floor(temp / math.pow(base, magnitude));
+		temp = temp % math.pow(base, magnitude);
+		total += factor * math.pow(base, magnitude);
+		magnitude -= 1;
+		diff = num - total;
+		res = res + digitSet[factor];
+	}
+	console.log(res)
+	return res
+} function Dec(num, base) {
+	return DecComp(math.re(num), base) + " + " + DecComp(math.im(num), base) + "i";
+} function DecComp(num, base) {
+	if (num == 0) {
+		return num;
+	}
+	sections = (num + "").split(".")
+	highDigits = sections[0].split("");
+	total = 0;
+	highMagnitude = highDigits.length - 1;
+	magnitude = highMagnitude;
+	digit = 0;
+	while (digit <= highMagnitude) {
+		total += digitSet.indexOf(highDigits[digit]) * math.pow(base, magnitude);
+		magnitude -= 1;
+		digit += 1;
+	}
+	if (sections[1] != undefined) {
+		lowDigits = sections[1].split("");
+		lowMagnitude = lowDigits.length
+		magnitude = -1 * lowMagnitude
+		digit = 0
+		while (digit < lowMagnitude) {
+			total += digitSet.indexOf(lowDigits[digit]) * math.pow(base, magnitude);
+			magnitude -= 1;
+			digit += 1;
+		}
+	}
+	return total
 }
-
 var Angle = {
 	button: document.getElementById("angleModeToggle"),
 	unit: 'rad',
