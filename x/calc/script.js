@@ -130,11 +130,12 @@ var Radix = {
 	value: 10,
 	set: function(base) {
 		if (this.value == 10) {
-			if (Num['a'] >= 2) {
+			if (Num['a'] >= 2 && Num['a'] <= 72) {
 				this.value = Num['a'];
 				this.button.innerHTML = "dec"
 			} else {
-				Dyn.alert("Base must be at least 2.")
+				Dyn.alert("Base must be between 2 and 72.")
+				return
 			}
 		} else {
 			this.value = 10;
