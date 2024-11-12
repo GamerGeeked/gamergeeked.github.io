@@ -32,7 +32,19 @@ var Num = {
 }
 
 //System Functions
-var field = document.getElementById("field");
+var Field = {
+	element: document.getElementById("field"),
+	set: function(num) {
+		this.element.value = num;
+		this.element.select();
+	}, get: function() {
+		value = this.element.value
+		if (value == "debug") {
+			return value
+		}
+		return Dec(value)
+	}
+}
 var Dyn = {
 	element: document.getElementById("dyn"),
 	alert: function(q) {
@@ -69,59 +81,20 @@ function Factorial(num = Num['a']) {
 	return math.multiply(num, math.divide(180, Math.PI));
 } function RandomInteger(num = Num['a']) {
 	return math.randomInt(0, Number(num));
-} function Base(num = Num['a'], base = Num['b']) {
-	return BaseComp(math.re(num)) + " + " + BaseComp(math.im(num)) + "i";
-} function BaseComp(num = Num['a'], base = Num['b']) {
-	if (num == 0) {
-		return num
+} function Base(num = Num['a'], base = Radix.value) {
+	reComp = math.re(num)
+	imComp = math.im(num)
+	if (reComp != 0 && imComp != 0) {
+		return Radix.base(reComp) + " + " + Radix.base(imComp) + "i";
+	} else if (imComp != 0) {
+		return Radix.base(imComp) + "i";
+	} else {
+		return Radix.base(reComp);
 	}
-	temp = num;
-	diff = num;
-	res = "";
-	magnitude = math.floor(math.log(num, base));
-	total = 0;
-	while (diff != 0) {
-		if (magnitude == -1) {
-			res = res + ".";
-		}
-		factor = math.floor(temp / math.pow(base, magnitude));
-		temp = temp % math.pow(base, magnitude);
-		total += factor * math.pow(base, magnitude);
-		magnitude -= 1;
-		diff = num - total;
-		res = res + digitSet[factor];
-	}
-	console.log(res)
-	return res
-} function Dec(num, base) {
-	return DecComp(math.re(num), base) + " + " + DecComp(math.im(num), base) + "i";
-} function DecComp(num, base) {
-	if (num == 0) {
-		return num;
-	}
-	sections = (num + "").split(".")
-	highDigits = sections[0].split("");
-	total = 0;
-	highMagnitude = highDigits.length - 1;
-	magnitude = highMagnitude;
-	digit = 0;
-	while (digit <= highMagnitude) {
-		total += digitSet.indexOf(highDigits[digit]) * math.pow(base, magnitude);
-		magnitude -= 1;
-		digit += 1;
-	}
-	if (sections[1] != undefined) {
-		lowDigits = sections[1].split("");
-		lowMagnitude = lowDigits.length
-		magnitude = -1 * lowMagnitude
-		digit = 0
-		while (digit < lowMagnitude) {
-			total += digitSet.indexOf(lowDigits[digit]) * math.pow(base, magnitude);
-			magnitude -= 1;
-			digit += 1;
-		}
-	}
-	return total
+} function Dec(num = Num['a'], base = Radix.value) {
+	//reComp = num.split(" + ")
+	//return Radix.dec(math.re(num), base) + " + " + Radix.dec(math.im(num), base) + "i";
+	return Radix.dec(num, base)
 }
 var Angle = {
 	button: document.getElementById("angleModeToggle"),
@@ -152,6 +125,74 @@ var Angle = {
 		}
 	}
 }
+var Radix = {
+	button: document.getElementById("baseSetter"),
+	value: 10,
+	set: function(base) {
+		if (this.value == 10) {
+			if (Num['a'] >= 2) {
+				this.value = Num['a'];
+				this.button.innerHTML = "dec"
+			} else {
+				Dyn.alert("Base must be at least 2.")
+			}
+		} else {
+			this.value = 10;
+			this.button.innerHTML = "bse"
+		}
+		Dyn.alert("Base set to " + this.value)
+		Debug.msg(this)
+	}, base: function(num, base = this.value) {
+		if (num == 0 || base == 10) {
+			return num
+		}
+		temp = num;
+		diff = num;
+		res = "";
+		magnitude = math.floor(math.log(num, base));
+		total = 0;
+		while (magnitude >= 0 || diff != 0) {
+			if (magnitude == -1) {
+				res = res + ".";
+			}
+			factor = math.floor(temp / math.pow(base, magnitude));
+			temp = temp % math.pow(base, magnitude);
+			total += factor * math.pow(base, magnitude);
+			magnitude -= 1;
+			diff = num - total;
+			res = res + digitSet[factor];
+		}
+		console.log(res)
+		return res
+	}, dec: function(num, base = this.value) {
+		if (num == 0 || base == 10) {
+			return num;
+		}
+		sections = (num + "").split(".")
+		highDigits = sections[0].split("");
+		total = 0;
+		highMagnitude = highDigits.length - 1;
+		magnitude = highMagnitude;
+		digit = 0;
+		while (digit <= highMagnitude) {
+			total += digitSet.indexOf(highDigits[digit]) * math.pow(base, magnitude);
+			magnitude -= 1;
+			digit += 1;
+		}
+		if (sections[1] != undefined) {
+			lowDigits = sections[1].split("");
+			lowMagnitude = lowDigits.length
+			magnitude = -1 * lowMagnitude
+			digit = 0
+			while (digit < lowMagnitude) {
+				total += digitSet.indexOf(lowDigits[digit]) * math.pow(base, magnitude);
+				magnitude -= 1;
+				digit += 1;
+			}
+		}
+		return total
+	}
+}
 
 
 //Function Handler
@@ -161,7 +202,7 @@ function Fn(op, num = Num['a'], op2) {
 		if (op2 != null) {
 			ans = op2(ans)
 		}
-		Dyn.alert(ans);
+		Dyn.alert(Base(ans));
 		console.log(op.name + "(" + num + ") = " + ans)
 		Num.set();
 	} catch (error) {
@@ -180,11 +221,10 @@ var Request = {
 		Debug.msg(Request);
 		Dyn.alert("Please input a value for " + Request.num);
 		Mode.set(Mode.inputOptions);
-		field.value = Num[num];
-		field.select();
+		Field.set(Base(Num[num]));
 	}
 }
-function Input(value = field.value) {
+function Input(value = Field.get()) {
 	if (value == "debug") {
 		Debug.state = !Debug.state;
 		if (Debug.state) {
@@ -199,10 +239,10 @@ function Input(value = field.value) {
 		if (Request.op) {
 			ans = math.complex(Request.op(Num['a'], Num['b']));
 			console.log(Request.op.name + "(" + Num['a'] + ", " + Num['b'] + ") = " + ans)
-			Dyn.alert(ans);
+			Dyn.alert(Base(ans));
 			Num.set();
 		} else {
-			Dyn.alert(Request.num + " set to " + Num[Request.num]);
+			Dyn.alert(Request.num + " set to " + Base(Num[Request.num]));
 		}
 	} catch (error) {
 		Dyn.alert(error);
