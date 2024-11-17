@@ -13,10 +13,10 @@ const digitSet = [
 var a_input = 0;
 var ans = 0;
 var Num = {
-	a: 0,
-	b: 0,
-	x: 0,
-	y: 0,
+	a: 2,
+	b: 2,
+	x: 2,
+	y: 2,
 	set: function(key = 'a', value = ans) {
 		value = math.complex(value);
 		if (math.re(math.im(value)) == 0) {
@@ -239,7 +239,7 @@ function Input(value = Field.get()) {
 			Dyn.alert("Debug Mode disabled.");
 		}
 		return;
-	}
+	} else if (value == "") {return}
 	try {
 		Num.set(Request.num, value);
 		if (Request.op) {
