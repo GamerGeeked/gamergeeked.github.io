@@ -1,14 +1,3 @@
-const digitSet = [
-	'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-	'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
-	'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-	'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D',
-	'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
-	'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
-	'Y', 'Z', '!', '@', '#', '$', '%', '^', '&', '*',
-	':', ';'
-]
-
 //Values
 var a_input = 0;
 var ans = 0;
@@ -143,11 +132,11 @@ var Radix = {
 	value: 10,
 	set: function(base) {
 		if (this.value == 10) {
-			if (Num['a'] >= 2 && Num['a'] <= 72) {
+			if (Num['a'] >= 2 && Num['a'] <= 36) {
 				this.value = Num['a'];
 				this.button.innerHTML = "dec"
 			} else {
-				Dyn.alert("Base must be between 2 and 72.")
+				Dyn.alert("Base must be between 2 and 36.")
 				return
 			}
 		} else {
@@ -157,7 +146,7 @@ var Radix = {
 		Dyn.alert("Base set to " + this.value)
 		Debug.msg(this)
 	}, base: function(num, base = this.value) {
-		temp = num;
+		/*temp = num;
 		diff = num;
 		res = "";
 		magnitude = math.floor(math.log(num, base));
@@ -174,29 +163,23 @@ var Radix = {
 			res = res + digitSet[factor];
 		}
 		//console.log(res)
-		return res
+		return res*/
+		return num.toString(base)
 	}, dec: function(num, base = this.value) {
 		if (num == 0 || base == 10) {
 			return num;
 		}
 		sections = (num + "").split(".")
-		highDigits = sections[0].split("");
-		total = 0;
-		highMagnitude = highDigits.length - 1;
-		magnitude = highMagnitude;
-		digit = 0;
-		while (digit <= highMagnitude) {
-			total += digitSet.indexOf(highDigits[digit]) * math.pow(base, magnitude);
-			magnitude -= 1;
-			digit += 1;
-		}
+		total = parseInt(num, base);
 		if (sections[1] != undefined) {
+			sign = math.sign(total)
+			console.log(sign)
 			lowDigits = sections[1].split("");
 			lowMagnitude = lowDigits.length
-			magnitude = -1 * lowMagnitude
+			magnitude = -1
 			digit = 0
 			while (digit < lowMagnitude) {
-				total += digitSet.indexOf(lowDigits[digit]) * math.pow(base, magnitude);
+				total += parseInt(lowDigits[digit], this.value) * math.pow(base, magnitude) * sign;
 				magnitude -= 1;
 				digit += 1;
 			}
@@ -264,3 +247,4 @@ function Input(value = Field.get()) {
 
 //Startup
 Request.send('a');
+//console.log(math.complex("3i").parseInt(12))
