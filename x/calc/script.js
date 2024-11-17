@@ -92,9 +92,20 @@ function Factorial(num = Num['a']) {
 		return Radix.base(reComp);
 	}
 } function Dec(num = Num['a'], base = Radix.value) {
-	//reComp = num.split(" + ")
-	//return Radix.dec(math.re(num), base) + " + " + Radix.dec(math.im(num), base) + "i";
-	return Radix.dec(num, base)
+	if (num == 0 || base == 10) {
+			return num
+	}
+	components = num.split(" + ")
+	reComp = components[0]
+	imComp = 0
+	try {
+		imComp = components[1].split("i")[0]
+	} catch {}
+	console.log(imComp)
+	console.log(
+		Radix.dec(reComp, base) + " + " + Radix.dec(imComp, base) + "i"
+	);
+	return 5
 }
 var Angle = {
 	button: document.getElementById("angleModeToggle"),
@@ -144,9 +155,6 @@ var Radix = {
 		Dyn.alert("Base set to " + this.value)
 		Debug.msg(this)
 	}, base: function(num, base = this.value) {
-		if (num == 0 || base == 10) {
-			return num
-		}
 		temp = num;
 		diff = num;
 		res = "";
@@ -163,7 +171,7 @@ var Radix = {
 			diff = num - total;
 			res = res + digitSet[factor];
 		}
-		console.log(res)
+		//console.log(res)
 		return res
 	}, dec: function(num, base = this.value) {
 		if (num == 0 || base == 10) {
