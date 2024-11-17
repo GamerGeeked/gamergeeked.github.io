@@ -132,11 +132,11 @@ var Radix = {
 	value: 10,
 	set: function(base) {
 		if (this.value == 10) {
-			if (Num['a'] >= 2 && Num['a'] <= 36) {
+			if (Num['a'] >= 2) {
 				this.value = Num['a'];
 				this.button.innerHTML = "dec"
 			} else {
-				Dyn.alert("Base must be between 2 and 36.")
+				Dyn.alert("Base must be at least 2.")
 				return
 			}
 		} else {
@@ -146,24 +146,33 @@ var Radix = {
 		Dyn.alert("Base set to " + this.value)
 		Debug.msg(this)
 	}, base: function(num, base = this.value) {
-		/*temp = num;
-		diff = num;
-		res = "";
-		magnitude = math.floor(math.log(num, base));
-		total = 0;
-		while (magnitude >= 0 || diff != 0) {
-			if (magnitude == -1) {
-				res = res + ".";
+		if (base > 36) {
+			temp = num;
+			diff = num;
+			highRes = [];
+			lowRes = [];
+			magnitude = math.floor(math.log(num, base))
+			total = 0;
+			while (magnitude >= 0 || diff != 0) {
+				factor = math.floor(temp / math.pow(base, magnitude));
+				temp = temp % math.pow(base, magnitude);
+				total += factor * math.pow(base, magnitude);
+				magnitude -= 1;
+				diff = num - total;
+				if (magnitude >= -1) {
+					highRes.push(factor);
+				} else {
+					lowRes.push(factor)
+				}
 			}
-			factor = math.floor(temp / math.pow(base, magnitude));
-			temp = temp % math.pow(base, magnitude);
-			total += factor * math.pow(base, magnitude);
-			magnitude -= 1;
-			diff = num - total;
-			res = res + digitSet[factor];
+			if (highRes.length == 0) {
+				highRes.push("0")
+			}
+			if (lowRes.length != 0) {
+				return highRes + "." + lowRes
+			}
+			return highRes
 		}
-		//console.log(res)
-		return res*/
 		return num.toString(base)
 	}, dec: function(num, base = this.value) {
 		if (num == 0 || base == 10) {
@@ -171,15 +180,33 @@ var Radix = {
 		}
 		sections = (num + "").split(".")
 		total = parseInt(num, base);
+		if (base > 36) {
+			highDigits = sections[0].split(",");
+			total = 0;
+			highMagnitude = highDigits.length - 1;
+			magnitude = highMagnitude;
+			digit = 0
+			while (digit <= highMagnitude) {
+				total += highDigits[digit] * math.pow(base, magnitude)
+				magnitude -= 1
+				digit += 1
+			}
+		}
 		if (sections[1] != undefined) {
 			sign = math.sign(total)
-			console.log(sign)
 			lowDigits = sections[1].split("");
+			if (base > 36) {
+				lowDigits = sections[1].split(",");
+			}
 			lowMagnitude = lowDigits.length
 			magnitude = -1
 			digit = 0
 			while (digit < lowMagnitude) {
-				total += parseInt(lowDigits[digit], this.value) * math.pow(base, magnitude) * sign;
+				if (base > 36) {
+					total += lowDigits[digit] * math.pow(base, magnitude) * sign;
+				} else {
+					total += parseInt(lowDigits[digit], this.value) * math.pow(base, magnitude) * sign;
+				}
 				magnitude -= 1;
 				digit += 1;
 			}
