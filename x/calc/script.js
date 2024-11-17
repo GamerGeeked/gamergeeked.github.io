@@ -100,10 +100,10 @@ function Factorial(num = Num['a']) {
 	if (num == 0 || base == 10) {
 		return num
 	}
-	components = num.split(" + ")
-	reComp = components[0]
+	components = num.split("+")
+	reComp = components[0].split(" ")[0];
 	try {
-		imComp = components[1].split("i")[0]
+		imComp = components[1].split("i")[0].split(" ")[0];
 	} catch {
 		imComp = 0
 	}
