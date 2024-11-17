@@ -13,10 +13,10 @@ const digitSet = [
 var a_input = 0;
 var ans = 0;
 var Num = {
-	a: 2,
-	b: 2,
-	x: 2,
-	y: 2,
+	a: 0,
+	b: 0,
+	x: 0,
+	y: 0,
 	set: function(key = 'a', value = ans) {
 		value = math.complex(value);
 		if (math.re(math.im(value)) == 0) {
@@ -82,18 +82,23 @@ function Factorial(num = Num['a']) {
 } function RandomInteger(num = Num['a']) {
 	return math.randomInt(0, Number(num));
 } function Base(num = Num['a'], base = Radix.value) {
+	if (base == 10) {
+		return num
+	}
 	reComp = math.re(num)
 	imComp = math.im(num)
-	if (reComp != 0 && imComp != 0) {
+	if (reComp && imComp) {
 		return Radix.base(reComp) + " + " + Radix.base(imComp) + "i";
-	} else if (imComp != 0) {
+	} else if (imComp) {
 		return Radix.base(imComp) + "i";
-	} else {
+	} else if (reComp) {
 		return Radix.base(reComp);
+	} else {
+		return "0"
 	}
 } function Dec(num = Num['a'], base = Radix.value) {
 	if (num == 0 || base == 10) {
-			return num
+		return num
 	}
 	components = num.split(" + ")
 	reComp = components[0]
