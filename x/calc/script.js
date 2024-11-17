@@ -97,15 +97,12 @@ function Factorial(num = Num['a']) {
 	}
 	components = num.split(" + ")
 	reComp = components[0]
-	imComp = 0
 	try {
 		imComp = components[1].split("i")[0]
-	} catch {}
-	console.log(imComp)
-	console.log(
-		Radix.dec(reComp, base) + " + " + Radix.dec(imComp, base) + "i"
-	);
-	return 5
+	} catch {
+		imComp = 0
+	}
+	return Radix.dec(reComp, base) + " + " + Radix.dec(imComp, base) + "i"
 }
 var Angle = {
 	button: document.getElementById("angleModeToggle"),
